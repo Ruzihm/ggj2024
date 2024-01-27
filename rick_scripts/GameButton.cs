@@ -26,6 +26,9 @@ public partial class GameButton : Area2D
 
 	[Export]
 	public ButtonType buttonType;
+
+	[Export]
+	public Label label;
 	
 
 	// Called when the node enters the scene tree for the first time.
@@ -51,5 +54,10 @@ public partial class GameButton : Area2D
 	{
 		QueueFree();
 		return dest.destType == destType;
+	}
+
+	public void SetName(string name)
+	{
+		label.Text = name;
 	}
 }

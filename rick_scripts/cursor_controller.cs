@@ -55,7 +55,6 @@ public partial class cursor_controller : RigidBody2D
 		{
 			foreach(GameButton button in hoveredButtons)
 			{
-				GD.Print("considering button: " + button.Name);
 				if (button.buttonType == GameButton.ButtonType.File)
 				{
 					draggedButton = button;

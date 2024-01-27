@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8b2tl2ap8cak"]
+[gd_scene load_steps=6 format=3 uid="uid://c8b2tl2ap8cak"]
 
+[ext_resource type="Script" path="res://rick_scripts/FileSpawner.cs" id="1_rgwno"]
 [ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_6k77y"]
 [ext_resource type="PackedScene" uid="uid://bq84gq33yoryu" path="res://rick_scripts/cursor.tscn" id="2_cydp2"]
 
@@ -9,16 +10,21 @@ b = Vector2(1150, 0)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8y0x1"]
 b = Vector2(0, 650)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wealo"]
-size = Vector2(79, 101)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjupe"]
-size = Vector2(83.0004, 113)
-
 [node name="Root" type="Node2D"]
 
 [node name="Controllers" type="Node2D" parent="."]
 position = Vector2(545, 282)
+
+[node name="FileSpawner" type="Timer" parent="Controllers" node_paths=PackedStringArray("Cursor")]
+wait_time = 5.0
+autostart = true
+script = ExtResource("1_rgwno")
+Cursor = NodePath("../../Cursor")
+TrashFilenames = Array[String](["trash!", "trashhhhh", "so trash", "garbaggio"])
+ImagesFilenames = Array[String](["image", "im an image", "pic", "photoooooo"])
+MarketingFilenames = Array[String](["ad", "advertisement", "buy buy buys"])
+fileScene = ExtResource("2_6k77y")
+spawnRect = Rect2(-200, -200, 100, 400)
 
 [node name="Cursor" parent="." instance=ExtResource("2_cydp2")]
 position = Vector2(426, 65)
@@ -50,92 +56,54 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 shape = SubResource("SegmentShape2D_8y0x1")
 debug_color = Color(0.380392, 0.47451, 1, 0.419608)
 
-[node name="imageFile" parent="." instance=ExtResource("2_6k77y")]
+[node name="imageFile" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("2_6k77y")]
 position = Vector2(537, 312)
-
-[node name="Area2D" parent="imageFile" index="0" node_paths=PackedStringArray("cursor")]
-cursor = NodePath("../../Cursor")
+cursor = NodePath("../Cursor")
 destType = 1
 
-[node name="CollisionShape2D" parent="imageFile/Area2D" index="0"]
-position = Vector2(-1.5, -29.5)
-shape = SubResource("RectangleShape2D_wealo")
-
-[node name="Label" parent="imageFile/Area2D" index="1"]
+[node name="Label" parent="imageFile" index="1"]
 text = "image file"
 
-[node name="Polygon2D" type="Polygon2D" parent="imageFile/Area2D" index="2"]
-position = Vector2(74, -24)
-polygon = PackedVector2Array(-44, 5, -110, 5, -109, -40, -44, -41)
+[node name="trashFile" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("2_6k77y")]
+position = Vector2(286, 378)
+cursor = NodePath("../Cursor")
 
-[node name="trashFile" parent="imageFile" instance=ExtResource("2_6k77y")]
-position = Vector2(-251, 66)
-
-[node name="Area2D" parent="imageFile/trashFile" index="0" node_paths=PackedStringArray("cursor")]
-cursor = NodePath("../../../Cursor")
-
-[node name="CollisionShape2D" parent="imageFile/trashFile/Area2D" index="0"]
-position = Vector2(-1.5, -29.5)
-shape = SubResource("RectangleShape2D_wealo")
-
-[node name="Label" parent="imageFile/trashFile/Area2D" index="1"]
+[node name="Label" parent="trashFile" index="1"]
 text = "trash file"
 
-[node name="Polygon2D" type="Polygon2D" parent="imageFile/trashFile/Area2D" index="2"]
-position = Vector2(74, -24)
-polygon = PackedVector2Array(-44, 5, -110, 5, -109, -40, -44, -41)
-
-[node name="TrashDest" parent="." instance=ExtResource("2_6k77y")]
-position = Vector2(813, 249)
-
-[node name="Area2D" parent="TrashDest" index="0" node_paths=PackedStringArray("cursor")]
-cursor = NodePath("../../Cursor")
+[node name="TrashDest" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("2_6k77y")]
+position = Vector2(940, 150)
+cursor = NodePath("../Cursor")
 buttonType = 1
 
-[node name="CollisionShape2D" parent="TrashDest/Area2D" index="0"]
-position = Vector2(-0.500061, -31.5)
-shape = SubResource("RectangleShape2D_qjupe")
+[node name="Label" parent="TrashDest" index="1"]
+text = "trash"
 
-[node name="Label" parent="TrashDest/Area2D" index="1"]
-text = "trash
-"
-
-[node name="Polygon2D" type="Polygon2D" parent="TrashDest/Area2D" index="2"]
-position = Vector2(6.24999, -66.9151)
-scale = Vector2(0.875, 0.714055)
-polygon = PackedVector2Array(-8.28571, 5.48286, -41.4286, 8.28377, -58.5714, 39.0937, -58.5714, 78.3064, 24.8571, 79.7068, 20.2857, 41.8946, -18.5714, 40.4942, 24.8571, 4.08241)
-
-[node name="ImagesDest" parent="." instance=ExtResource("2_6k77y")]
-position = Vector2(799, 370)
-
-[node name="Area2D" parent="ImagesDest" index="0" node_paths=PackedStringArray("cursor")]
-cursor = NodePath("../../Cursor")
+[node name="ImagesDest" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("2_6k77y")]
+position = Vector2(940, 350)
+cursor = NodePath("../Cursor")
 destType = 1
 buttonType = 1
 
-[node name="CollisionShape2D" parent="ImagesDest/Area2D" index="0"]
-position = Vector2(-0.500061, -31.5)
-shape = SubResource("RectangleShape2D_qjupe")
+[node name="Label" parent="ImagesDest" index="1"]
+text = "images
+"
 
-[node name="Label" parent="ImagesDest/Area2D" index="1"]
-text = "images"
+[node name="MarketingDest" parent="." node_paths=PackedStringArray("cursor", "label") instance=ExtResource("2_6k77y")]
+position = Vector2(940, 550)
+cursor = NodePath("../Cursor")
+destType = 2
+buttonType = 1
+label = NodePath("../ImagesDest/Label")
 
-[node name="Polygon2D" type="Polygon2D" parent="ImagesDest/Area2D" index="2"]
-position = Vector2(6.24999, -66.9151)
-scale = Vector2(0.875, 0.714055)
-polygon = PackedVector2Array(-43.7143, -1.51938, -47.1429, 8.28378, -63.1429, 8.28378, -59.7143, 76.9059, 35.1428, 76.9059, 45.4286, 6.88333, -22, 8.28378, -24.2857, 1.28152)
+[node name="Label" parent="MarketingDest" index="1"]
+text = "marketing"
 
-[connection signal="body_entered" from="imageFile/Area2D" to="imageFile/Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="imageFile/Area2D" to="imageFile/Area2D" method="_on_body_exited"]
-[connection signal="body_entered" from="imageFile/trashFile/Area2D" to="imageFile/trashFile/Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="imageFile/trashFile/Area2D" to="imageFile/trashFile/Area2D" method="_on_body_exited"]
-[connection signal="body_entered" from="TrashDest/Area2D" to="TrashDest/Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="TrashDest/Area2D" to="TrashDest/Area2D" method="_on_body_exited"]
-[connection signal="body_entered" from="ImagesDest/Area2D" to="ImagesDest/Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="ImagesDest/Area2D" to="ImagesDest/Area2D" method="_on_body_exited"]
+[connection signal="timeout" from="Controllers/FileSpawner" to="Controllers/FileSpawner" method="OnTimeout"]
 
 [editable path="Cursor"]
 [editable path="imageFile"]
-[editable path="imageFile/trashFile"]
+[editable path="trashFile"]
 [editable path="TrashDest"]
 [editable path="ImagesDest"]
+[editable path="MarketingDest"]
