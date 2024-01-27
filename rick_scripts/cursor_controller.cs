@@ -11,6 +11,8 @@ public partial class cursor_controller : RigidBody2D
 	GameButton draggedButton;
 	HashSet<GameButton> hoveredButtons = new HashSet<GameButton>();
 
+	private bool controlsReversed = false;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -42,6 +44,12 @@ public partial class cursor_controller : RigidBody2D
 	private void MoveMouse(InputEventMouseMotion eventMouseMotion)
 	{
 		var relative = eventMouseMotion.Relative;
+
+		if (controlsReversed)
+		{
+			relative = new Vector2(-relative.X, relative.Y);
+		}
+
 		MoveAndCollide(relative);
 		if (draggedButton != null)
 		{
@@ -95,5 +103,15 @@ public partial class cursor_controller : RigidBody2D
 	public void OnExit(GameButton button)
 	{
 		hoveredButtons.Remove(button);
+	}
+
+	public void ReverseControls()
+	{
+		controlsReversed = true;
+	}
+
+	public void ResetControls()
+	{
+		controlsReversed = false;
 	}
 }
