@@ -8,8 +8,8 @@ public partial class cursor_controller : RigidBody2D
 	Viewport vp;
 	Rect2 hitbox;
 
-	List<RigidBody2D> overlappeds_rbs;
-	List<GameButton> overlappeds_buttons;
+	GameButton draggedButton;
+	HashSet<GameButton> hoveredButtons = new HashSet<GameButton>();
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -43,13 +43,52 @@ public partial class cursor_controller : RigidBody2D
 	{
 		var relative = eventMouseMotion.Relative;
 		MoveAndCollide(relative);
+		if (draggedButton != null)
+		{
+			draggedButton.GlobalPosition = GlobalPosition;
+		}
 	}
 
 	private void ClickMouse(InputEventMouseButton eventMouseButton)
 	{
 		if (eventMouseButton.IsPressed())
 		{
+			foreach(GameButton button in hoveredButtons)
+			{
+				GD.Print("considering button: " + button.Name);
+				if (button.buttonType == GameButton.ButtonType.File)
+				{
+					draggedButton = button;
+					break;
+				}
+			}
+		} else if (eventMouseButton.IsReleased())
+		{
 
+			if (draggedButton != null)
+			{
+				foreach (GameButton destButton in hoveredButtons)
+				{
+					if (destButton.buttonType == GameButton.ButtonType.Destination)
+					{
+						bool result = draggedButton.Deposit(destButton);
+						GD.Print("drop correctly: " + result);
+						hoveredButtons.Remove(draggedButton);
+					}
+				}
+			}
+
+			draggedButton = null;
 		}
+	}
+
+	public void OnEnter(GameButton button)
+	{
+		hoveredButtons.Add(button);
+	}
+
+	public void OnExit(GameButton button)
+	{
+		hoveredButtons.Remove(button);
 	}
 }

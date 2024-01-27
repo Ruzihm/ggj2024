@@ -3,6 +3,31 @@ using System;
 
 public partial class GameButton : Area2D
 {
+	[Export]
+	public cursor_controller cursor;
+
+	public enum ButtonType
+	{
+		File,
+		Destination,
+		Control
+	}
+
+	public enum DestType
+	{
+		Trash,
+		Images,
+		Marketing
+	}
+
+	[Export]
+	public DestType destType;
+
+
+	[Export]
+	public ButtonType buttonType;
+	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -13,14 +38,18 @@ public partial class GameButton : Area2D
 	{
 	}
 
-	public void _on_area_2d_body_entered(Node2D body)
+	public void _on_body_entered(Node2D body)
 	{
-		GD.Print("entered");
-		QueueFree();
+		cursor.OnEnter(this);
 	}
-	public void _on_area_2d_body_exited(Node2D body)
+	public void _on_body_exited(Node2D body)
 	{
-		GD.Print("exited");
+		cursor.OnExit(this);
+	}
+
+	public bool Deposit(GameButton dest)
+	{
 		QueueFree();
+		return dest.destType == destType;
 	}
 }
