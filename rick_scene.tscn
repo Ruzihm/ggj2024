@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8b2tl2ap8cak"]
+[gd_scene load_steps=9 format=3 uid="uid://c8b2tl2ap8cak"]
 
 [ext_resource type="Script" path="res://rick_scripts/FileSpawner.cs" id="1_rgwno"]
 [ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_6k77y"]
 [ext_resource type="PackedScene" uid="uid://bq84gq33yoryu" path="res://rick_scripts/cursor.tscn" id="2_cydp2"]
 [ext_resource type="Script" path="res://Scripts/Gags/GagController.cs" id="3_jctlq"]
 [ext_resource type="PackedScene" uid="uid://cylqcoyk0hovh" path="res://Scripts/Gags/ReverseControlsGag.tscn" id="4_5qoeb"]
+[ext_resource type="PackedScene" uid="uid://bsxjapxqktirf" path="res://Scripts/Gags/CursorGravityGag.tscn" id="4_njs62"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hmngg"]
 b = Vector2(1150, 0)
@@ -33,7 +34,7 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 script = ExtResource("3_jctlq")
-gagScenes = Array[PackedScene]([ExtResource("4_5qoeb")])
+gagScenes = Array[PackedScene]([ExtResource("4_njs62"), ExtResource("4_5qoeb")])
 Cursor = NodePath("../../Cursor")
 
 [node name="Cursor" parent="." instance=ExtResource("2_cydp2")]

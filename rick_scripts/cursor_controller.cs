@@ -11,7 +11,10 @@ public partial class cursor_controller : RigidBody2D
 	GameButton draggedButton;
 	HashSet<GameButton> hoveredButtons = new HashSet<GameButton>();
 
+	private bool dialogMode = false;
+
 	private bool controlsReversed = false;
+	private bool gravityEnabled = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -19,12 +22,22 @@ public partial class cursor_controller : RigidBody2D
 		base._Ready();
 
 		vp = GetViewport();
+		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Input.MouseMode = Input.MouseModeEnum.Captured;
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		base._PhysicsProcess(delta);
+
+		if (gravityEnabled && draggedButton != null) 
+		{
+			MoveAndCollide(new Vector2(0, 50));
+		}
 	}
 
 	public override void _Input(InputEvent @event)
@@ -68,14 +81,18 @@ public partial class cursor_controller : RigidBody2D
 					default:
 						break;
 					case GameButton.ButtonType.File:
-						draggedButton = button;
+						if (!dialogMode)
+						{
+							draggedButton = button;
+						}
 						break;
 					case GameButton.ButtonType.Control:
 						button.EmitSignal(GameButton.SignalName.OnClick);
 						break;
 				} 
 			}
-		} else if (eventMouseButton.IsReleased())
+		}
+		else if (eventMouseButton.IsReleased())
 		{
 
 			if (draggedButton != null)
@@ -110,8 +127,20 @@ public partial class cursor_controller : RigidBody2D
 		controlsReversed = true;
 	}
 
+	public void EnableGravity()
+	{
+		gravityEnabled = true;
+	}
+
+	public void BeginDialogMode()
+	{
+		dialogMode = true;
+		draggedButton = null;
+	}
+
 	public void ResetControls()
 	{
+		gravityEnabled = false;
 		controlsReversed = false;
 	}
 }
