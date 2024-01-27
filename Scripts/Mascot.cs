@@ -29,7 +29,7 @@ public partial class Mascot : Node2D {
 			if (keyEvent.Keycode == Key.S) {
 				GD.Print("S was pressed");
 				Vector2 mousePos = GetGlobalMousePosition();
-				SetTweenTarget(mousePos, 2f);
+				SetTweenTarget(mousePos);
 			}
 			if (keyEvent.Keycode == Key.E) {
 				PlayText("TEST text goes here stupid", 5f);
@@ -59,7 +59,7 @@ public partial class Mascot : Node2D {
 	}
 	
 	// Tween to location
-	public void SetTweenTarget(Vector2 targetPosition, float tweenTimeSeconds) {
+	public void SetTweenTarget(Vector2 targetPosition) {
 		TweenTarget = targetPosition;
 	}
 	

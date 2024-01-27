@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bajxyvngdtd7s"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_iujce"]
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_iujce")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 24.0
+offset_right = 1136.0
+offset_bottom = 68.0
+
+[node name="TimerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 85.0
+offset_right = 593.0
+offset_bottom = 108.0
+text = "99.99"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 600.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
