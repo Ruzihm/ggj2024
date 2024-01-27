@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8b2tl2ap8cak"]
+
+[ext_resource type="Script" path="res://rick_scripts/cursor_controller.cs" id="1_2hhx3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v7blj"]
+
+[node name="Root" type="Node2D"]
+
+[node name="Controllers" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Controllers"]
+position = Vector2(-4, 101)
+script = ExtResource("1_2hhx3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Controllers/Node2D"]
+texture = SubResource("NoiseTexture2D_v7blj")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 500)
