@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://b2excr0f7ovs4"]
+
+[ext_resource type="Script" path="res://Scripts/Mascot.cs" id="1_da357"]
+[ext_resource type="Texture2D" uid="uid://x3w2xgk2ac3j" path="res://Art/Placeholder/TestAnimation/run-1.png" id="2_f6mk2"]
+[ext_resource type="Texture2D" uid="uid://b0y15taj78njf" path="res://Art/Placeholder/TestAnimation/run-2.png" id="3_m45p0"]
+[ext_resource type="Texture2D" uid="uid://bsyfvtyhurtko" path="res://Art/Placeholder/TestAnimation/run-3.png" id="4_ldw02"]
+[ext_resource type="Texture2D" uid="uid://dlsvmmui2yu8g" path="res://Art/Placeholder/TestAnimation/run-4.png" id="5_8pru6"]
+[ext_resource type="Texture2D" uid="uid://byj4qj8w8mx84" path="res://Art/Placeholder/TestAnimation/run-5.png" id="6_2f5ot"]
+[ext_resource type="Texture2D" uid="uid://bfkqurwfjs13t" path="res://Art/Placeholder/TestAnimation/run-6.png" id="7_48522"]
+[ext_resource type="Texture2D" uid="uid://djf4fixw0up6t" path="res://Art/Placeholder/TestAnimation/run-7.png" id="8_s1o38"]
+[ext_resource type="Texture2D" uid="uid://lxaivqo6osq4" path="res://Art/Placeholder/TestAnimation/run-8.png" id="9_flbi5"]
+[ext_resource type="Texture2D" uid="uid://bwh4i4bjl4dw4" path="res://Art/Placeholder/future9slice.png" id="10_bqqm2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mhoa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f6mk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m45p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ldw02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8pru6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2f5ot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_48522")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s1o38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_flbi5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[node name="Mascot" type="Node2D"]
+script = ExtResource("1_da357")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4mhoa")
+animation = &"idle"
+frame = 7
+frame_progress = 1.0
+
+[node name="DialogBox" type="NinePatchRect" parent="."]
+offset_left = 28.0
+offset_top = -133.0
+offset_right = 171.0
+offset_bottom = 57.0
+texture = ExtResource("10_bqqm2")
+patch_margin_left = 34
+patch_margin_top = 34
+patch_margin_right = 34
+patch_margin_bottom = 34
+
+[node name="DialogText" type="Label" parent="DialogBox"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 37.0
+offset_right = 111.0
+offset_bottom = 158.0
+text = "test text goes here"
+autowrap_mode = 3
