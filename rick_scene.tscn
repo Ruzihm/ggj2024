@@ -1,19 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8b2tl2ap8cak"]
+[gd_scene load_steps=5 format=3 uid="uid://c8b2tl2ap8cak"]
 
-[ext_resource type="Script" path="res://rick_scripts/cursor_controller.cs" id="1_2hhx3"]
+[ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_6k77y"]
+[ext_resource type="PackedScene" uid="uid://bq84gq33yoryu" path="res://rick_scripts/cursor.tscn" id="2_cydp2"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v7blj"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hmngg"]
+b = Vector2(1150, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8y0x1"]
+b = Vector2(0, 650)
 
 [node name="Root" type="Node2D"]
 
 [node name="Controllers" type="Node2D" parent="."]
+position = Vector2(545, 282)
 
-[node name="Node2D" type="Node2D" parent="Controllers"]
-position = Vector2(-4, 101)
-script = ExtResource("1_2hhx3")
+[node name="Cursor" parent="." instance=ExtResource("2_cydp2")]
+position = Vector2(426, 65)
 
-[node name="Sprite2D" type="Sprite2D" parent="Controllers/Node2D"]
-texture = SubResource("NoiseTexture2D_v7blj")
-centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 500, 500)
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Top Wall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top Wall"]
+shape = SubResource("SegmentShape2D_hmngg")
+
+[node name="Bottom Wall" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom Wall"]
+shape = SubResource("SegmentShape2D_hmngg")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Right Wall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall"]
+position = Vector2(1150, 0)
+shape = SubResource("SegmentShape2D_8y0x1")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Left Wall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall"]
+shape = SubResource("SegmentShape2D_8y0x1")
+debug_color = Color(0.380392, 0.47451, 1, 0.419608)
+
+[node name="GameButton" parent="." instance=ExtResource("2_6k77y")]
+position = Vector2(537, 312)
+
+[editable path="Cursor"]

@@ -1,81 +1,55 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-public partial class cursor_controller : Node2D
+public partial class cursor_controller : RigidBody2D
 {
 	Viewport vp;
-	Vector2 startPos;
 	Rect2 hitbox;
+
+	List<RigidBody2D> overlappeds_rbs;
+	List<GameButton> overlappeds_buttons;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		base._Ready();
+
 		vp = GetViewport();
-		startPos = GlobalPosition;
-		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		UpdatePosition();
-		MoveMouse();
+		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
-	private void UpdatePosition()
+	public override void _Input(InputEvent @event)
 	{
-		var time = Time.GetTicksMsec()/1000.0;
-		var posX = Mathf.PingPong(time, 2) * 100 + startPos.X;
-		var curPos = GlobalPosition;
-		curPos.X = (float)posX;
-		GlobalPosition = curPos;
-		hitbox = new Rect2(GlobalPosition, 500, 500);
+		base._Input(@event);
+
+		if (@event is InputEventMouseMotion eventMouseMotion)
+		{
+			MoveMouse(eventMouseMotion);
+		}
+		else if (@event is InputEventMouseButton eventMouseButton)
+		{
+			ClickMouse(eventMouseButton);
+		}
 	}
 
-	private void MoveMouse()
+	private void MoveMouse(InputEventMouseMotion eventMouseMotion)
 	{
-		var position = vp.GetMousePosition();
+		var relative = eventMouseMotion.Relative;
+		MoveAndCollide(relative);
+	}
 
-		if (!hitbox.HasPoint(position)) return;
-
-		var leftLimit = GlobalPosition.X;
-
-		var rightLimit = GlobalPosition.X + 500;
-
-		var topLimit = GlobalPosition.Y;
-
-		var bottomLimit = GlobalPosition.Y + 500;
-
-		var offset = GlobalPosition + new Vector2(250, 250) - position;
-
-		GD.Print("offset: " + offset);
-
-		if (offset.Y>offset.X)
+	private void ClickMouse(InputEventMouseButton eventMouseButton)
+	{
+		if (eventMouseButton.IsPressed())
 		{
-			GD.Print("y>x");
-			if (offset.Y < -offset.X)
-			{
-				position.X = rightLimit;
-			}
-			else
-			{
-				position.Y = topLimit;
-			}
-		}
-		else
-		{
-			GD.Print("y<=x");
-			if (offset.Y < -offset.X)
-			{
-				position.Y = bottomLimit;
-			}
-			else
-			{
-				position.X = leftLimit;
-			}
-		}
 
-		vp.WarpMouse(position);
+		}
 	}
 }
