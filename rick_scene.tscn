@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_6k77y"]
 [ext_resource type="PackedScene" uid="uid://bq84gq33yoryu" path="res://rick_scripts/cursor.tscn" id="2_cydp2"]
 [ext_resource type="Script" path="res://Scripts/Gags/GagController.cs" id="3_jctlq"]
-[ext_resource type="PackedScene" uid="uid://cylqcoyk0hovh" path="res://Scripts/Gags/ReverseControlsGag.tscn" id="4_5qoeb"]
-[ext_resource type="PackedScene" uid="uid://bsxjapxqktirf" path="res://Scripts/Gags/CursorGravityGag.tscn" id="4_njs62"]
+[ext_resource type="PackedScene" uid="uid://tu04lvh6ja7y" path="res://Scripts/Gags/CaptchaGag.tscn" id="6_sfmjw"]
+[ext_resource type="PackedScene" path="res://mascot.tscn" id="8_f7aoe"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hmngg"]
 b = Vector2(1150, 0)
@@ -29,13 +29,14 @@ MarketingFilenames = Array[String](["ad", "advertisement", "buy buy buys"])
 fileScene = ExtResource("2_6k77y")
 spawnRect = Rect2(-200, -200, 100, 400)
 
-[node name="GagController" type="Timer" parent="Controllers" node_paths=PackedStringArray("Cursor")]
+[node name="GagController" type="Timer" parent="Controllers" node_paths=PackedStringArray("cursor", "mascot")]
 wait_time = 10.0
 one_shot = true
 autostart = true
 script = ExtResource("3_jctlq")
-gagScenes = Array[PackedScene]([ExtResource("4_njs62"), ExtResource("4_5qoeb")])
-Cursor = NodePath("../../Cursor")
+gagScenes = Array[PackedScene]([ExtResource("6_sfmjw")])
+cursor = NodePath("../../Cursor")
+mascot = NodePath("../../Mascot")
 
 [node name="Cursor" parent="." instance=ExtResource("2_cydp2")]
 position = Vector2(426, 65)
@@ -109,6 +110,9 @@ label = NodePath("../ImagesDest/Label")
 
 [node name="Label" parent="MarketingDest" index="1"]
 text = "marketing"
+
+[node name="Mascot" parent="." instance=ExtResource("8_f7aoe")]
+z_index = -1000
 
 [connection signal="timeout" from="Controllers/FileSpawner" to="Controllers/FileSpawner" method="OnTimeout"]
 [connection signal="timeout" from="Controllers/GagController" to="Controllers/GagController" method="OnTimeout"]

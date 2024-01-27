@@ -7,7 +7,10 @@ public partial class GagController : Timer
 	public Godot.Collections.Array<PackedScene> gagScenes;
 
 	[Export]
-	public cursor_controller Cursor;
+	public cursor_controller cursor;
+
+	[Export]
+	public Mascot mascot;
 
 	private BaseGag currentGag;
 
@@ -22,7 +25,8 @@ public partial class GagController : Timer
 	{
 		var newScene = gagScenes[(int)(GD.Randi() % gagScenes.Count)];
 		currentGag = newScene.Instantiate() as BaseGag;
-		currentGag.Cursor = Cursor;
+		currentGag.cursor = cursor;
+		currentGag.mascot = mascot;
 		currentGag.OnComplete += OnGagComplete;
 
 		AddChild(currentGag);

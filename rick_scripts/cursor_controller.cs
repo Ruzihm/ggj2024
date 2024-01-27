@@ -146,5 +146,6 @@ public partial class cursor_controller : RigidBody2D
 	{
 		gravityEnabled = false;
 		controlsReversed = false;
+		dialogMode = false;
 	}
 }
