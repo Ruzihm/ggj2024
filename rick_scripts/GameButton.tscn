@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://rick_scripts/GameButton.cs" id="1_x1vfr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6q00s"]
-size = Vector2(85.9998, 101)
+size = Vector2(123.999, 133)
 
 [node name="Area2D" type="Area2D" node_paths=PackedStringArray("label")]
 script = ExtResource("1_x1vfr")
 label = NodePath("Label")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.500076, -32.9999)
+position = Vector2(-2.5, -32.9999)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_6q00s")
 

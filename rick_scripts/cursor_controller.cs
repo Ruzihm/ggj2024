@@ -55,11 +55,17 @@ public partial class cursor_controller : RigidBody2D
 		{
 			foreach(GameButton button in hoveredButtons)
 			{
-				if (button.buttonType == GameButton.ButtonType.File)
+				switch (button.buttonType)
 				{
-					draggedButton = button;
-					break;
-				}
+					default:
+						break;
+					case GameButton.ButtonType.File:
+						draggedButton = button;
+						break;
+					case GameButton.ButtonType.Control:
+						button.EmitSignal(GameButton.SignalName.OnClick);
+						break;
+				} 
 			}
 		} else if (eventMouseButton.IsReleased())
 		{

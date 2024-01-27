@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://mymeqdjas71c"]
+
+[ext_resource type="Script" path="res://rick_scripts/MenuController.cs" id="1_55v81"]
+[ext_resource type="PackedScene" uid="uid://bq84gq33yoryu" path="res://rick_scripts/cursor.tscn" id="2_6vg6k"]
+[ext_resource type="PackedScene" uid="uid://c8b2tl2ap8cak" path="res://rick_scene.tscn" id="2_vaagi"]
+[ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="3_g4dsm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_soeg7"]
+font_size = 86
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_55v81")
+gameScene = ExtResource("2_vaagi")
+
+[node name="Cursor" parent="." instance=ExtResource("2_6vg6k")]
+position = Vector2(171, 108)
+
+[node name="Start" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("3_g4dsm")]
+position = Vector2(589, 209)
+cursor = NodePath("../Cursor")
+buttonType = 2
+
+[node name="CollisionShape2D" parent="Start" index="0"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1.795)
+
+[node name="Label" parent="Start" index="1"]
+offset_left = -101.0
+offset_top = -59.0
+offset_right = 101.0
+offset_bottom = 59.0
+text = "Start"
+label_settings = SubResource("LabelSettings_soeg7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" parent="." node_paths=PackedStringArray("cursor", "label") instance=ExtResource("3_g4dsm")]
+position = Vector2(592, 474)
+cursor = NodePath("../Cursor")
+buttonType = 2
+label = NodePath("../Start/Label")
+
+[node name="CollisionShape2D" parent="Exit" index="0"]
+position = Vector2(0, 0)
+scale = Vector2(1.095, 1.825)
+
+[node name="Label" parent="Exit" index="1"]
+offset_left = -101.0
+offset_top = -59.0
+offset_right = 101.0
+offset_bottom = 59.0
+text = "Quit"
+label_settings = SubResource("LabelSettings_soeg7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="OnClick" from="Start" to="." method="OnStart"]
+[connection signal="OnClick" from="Exit" to="." method="OnQuit"]
+
+[editable path="Start"]
+[editable path="Exit"]
