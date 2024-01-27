@@ -112,7 +112,8 @@ label = NodePath("../ImagesDest/Label")
 text = "marketing"
 
 [node name="Mascot" parent="." instance=ExtResource("8_f7aoe")]
-z_index = -1000
+z_index = 4096
+z_as_relative = false
 
 [connection signal="timeout" from="Controllers/FileSpawner" to="Controllers/FileSpawner" method="OnTimeout"]
 [connection signal="timeout" from="Controllers/GagController" to="Controllers/GagController" method="OnTimeout"]

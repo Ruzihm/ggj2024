@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 public partial class CaptchaGag : BaseGag
 {
@@ -14,12 +15,14 @@ public partial class CaptchaGag : BaseGag
 	{
 		base._Ready();
 		cursor.BeginDialogMode();
-		_ = mascot.PlayText("We need you to prove you are human. How many grains of sand are pictured in the shown image?", 3);
+		_ = mascot.PlayText("Prove you are human. How many grains of sand are pictured in the shown image?", 3);
 		inputText.GrabFocus();
 	}
 
-	public async void Submit()
+	public async Task Submit()
 	{
+		if (!inputPossible) return;
+
 		inputPossible = false;
 		string val = inputText.Text;
 
@@ -30,10 +33,11 @@ public partial class CaptchaGag : BaseGag
 
 		if (attempted)
 		{
-			_ = mascot.PlayText("Eh, close enough", 1);
+			_ = mascot.PlayText("Eh, close enough.", 1);
 			cursor.ResetControls();
 			EmitSignal(BaseGag.SignalName.OnComplete);
-		} else
+		}
+		else
 		{
 			inputText.Text = "";
 			await mascot.PlayText("Incorrect. Please try again. Remaining attempts: 98432786318", 5);
@@ -42,7 +46,7 @@ public partial class CaptchaGag : BaseGag
 		}
 	}
 	
-	public async void OnGUI(InputEvent @event)
+	public void OnGUI(InputEvent @event)
 	{
 		if (@event.IsPressed() && @event is InputEventKey eventKey)
 		{

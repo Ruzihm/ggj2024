@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://tu04lvh6ja7y"]
+[gd_scene load_steps=3 format=3 uid="uid://tu04lvh6ja7y"]
 
 [ext_resource type="Script" path="res://Scripts/Gags/CaptchaGag.cs" id="1_2ehjl"]
+[ext_resource type="Texture2D" uid="uid://t2w3p7qtaikc" path="res://Art/sand.png" id="2_deh35"]
 
 [node name="CaptchaGag" type="Node2D" node_paths=PackedStringArray("inputText")]
 position = Vector2(219, 111)
@@ -14,7 +15,9 @@ color = Color(0, 0, 0, 0.152941)
 polygon = PackedVector2Array(-55, -29, 1163, -24, 1178, 652.203, -58, 633.014)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(81, 41)
+position = Vector2(345, 100)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("2_deh35")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
