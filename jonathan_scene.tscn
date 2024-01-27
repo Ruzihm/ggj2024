@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://1000t8hif8nm"]
+
+[ext_resource type="Texture2D" uid="uid://x3w2xgk2ac3j" path="res://Art/Placeholder/TestAnimation/run-1.png" id="2_7nayg"]
+[ext_resource type="Texture2D" uid="uid://b0y15taj78njf" path="res://Art/Placeholder/TestAnimation/run-2.png" id="3_kgny5"]
+[ext_resource type="Texture2D" uid="uid://bsyfvtyhurtko" path="res://Art/Placeholder/TestAnimation/run-3.png" id="4_u0sfi"]
+[ext_resource type="Texture2D" uid="uid://dlsvmmui2yu8g" path="res://Art/Placeholder/TestAnimation/run-4.png" id="5_k6hvx"]
+[ext_resource type="Texture2D" uid="uid://byj4qj8w8mx84" path="res://Art/Placeholder/TestAnimation/run-5.png" id="6_mfrrh"]
+[ext_resource type="Texture2D" uid="uid://bfkqurwfjs13t" path="res://Art/Placeholder/TestAnimation/run-6.png" id="7_j00pl"]
+[ext_resource type="Texture2D" uid="uid://djf4fixw0up6t" path="res://Art/Placeholder/TestAnimation/run-7.png" id="8_vk40g"]
+[ext_resource type="Texture2D" uid="uid://lxaivqo6osq4" path="res://Art/Placeholder/TestAnimation/run-8.png" id="9_fhdgk"]
+[ext_resource type="Script" path="res://Scripts/Mascot.cs" id="10_mfuft"]
+[ext_resource type="Texture2D" uid="uid://bwh4i4bjl4dw4" path="res://Art/Placeholder/future9slice.png" id="11_7jvul"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mhoa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7nayg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kgny5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u0sfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k6hvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mfrrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j00pl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vk40g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fhdgk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mascot" type="Node2D" parent="."]
+script = ExtResource("10_mfuft")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Mascot"]
+sprite_frames = SubResource("SpriteFrames_4mhoa")
+animation = &"idle"
+frame = 7
+frame_progress = 1.0
+
+[node name="DialogBox" type="NinePatchRect" parent="Mascot"]
+offset_left = 28.0
+offset_top = -133.0
+offset_right = 171.0
+offset_bottom = 57.0
+texture = ExtResource("11_7jvul")
+patch_margin_left = 34
+patch_margin_top = 34
+patch_margin_right = 34
+patch_margin_bottom = 34
+
+[node name="DialogText" type="Label" parent="Mascot/DialogBox"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 37.0
+offset_right = 111.0
+offset_bottom = 158.0
+text = "test text goes here"
+autowrap_mode = 3
