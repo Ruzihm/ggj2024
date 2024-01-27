@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://cuy28bh33yhfl"]
+
+[ext_resource type="Script" path="res://rick_scripts/FileSpawner.cs" id="1_af5ns"]
+[ext_resource type="PackedScene" path="res://rick_scripts/GameButton.tscn" id="2_eh3vf"]
+[ext_resource type="PackedScene" uid="uid://cu4ilqyv5kok4" path="res://rick_scripts/cursor.tscn" id="3_1xq7c"]
+[ext_resource type="PackedScene" uid="uid://bajxyvngdtd7s" path="res://gui.tscn" id="4_lvrr6"]
+[ext_resource type="PackedScene" uid="uid://b2excr0f7ovs4" path="res://mascot.tscn" id="5_usa8x"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hmngg"]
+b = Vector2(1150, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8y0x1"]
+b = Vector2(0, 650)
+
+[node name="Root" type="Node2D"]
+
+[node name="Controllers" type="Node2D" parent="."]
+position = Vector2(545, 282)
+
+[node name="FileSpawner" type="Timer" parent="Controllers" node_paths=PackedStringArray("Cursor")]
+wait_time = 5.0
+script = ExtResource("1_af5ns")
+Cursor = NodePath("../../Cursor")
+TrashFilenames = Array[String](["trash!", "trashhhhh", "so trash", "garbaggio"])
+ImagesFilenames = Array[String](["image", "im an image", "pic", "photoooooo"])
+MarketingFilenames = Array[String](["ad", "advertisement", "buy buy buys"])
+fileScene = ExtResource("2_eh3vf")
+spawnRect = Rect2(-200, -200, 100, 400)
+
+[node name="Cursor" parent="." instance=ExtResource("3_1xq7c")]
+position = Vector2(426, 65)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Top Wall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top Wall"]
+shape = SubResource("SegmentShape2D_hmngg")
+
+[node name="Bottom Wall" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom Wall"]
+shape = SubResource("SegmentShape2D_hmngg")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Right Wall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall"]
+position = Vector2(1150, 0)
+shape = SubResource("SegmentShape2D_8y0x1")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Left Wall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall"]
+shape = SubResource("SegmentShape2D_8y0x1")
+debug_color = Color(0.380392, 0.47451, 1, 0.419608)
+
+[node name="TrashDest" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("2_eh3vf")]
+position = Vector2(940, 150)
+cursor = NodePath("../Cursor")
+buttonType = 1
+
+[node name="Label" parent="TrashDest" index="1"]
+text = "trash"
+
+[node name="ImagesDest" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("2_eh3vf")]
+position = Vector2(940, 350)
+cursor = NodePath("../Cursor")
+destType = 1
+buttonType = 1
+
+[node name="Label" parent="ImagesDest" index="1"]
+text = "images
+"
+
+[node name="MarketingDest" parent="." node_paths=PackedStringArray("cursor", "label") instance=ExtResource("2_eh3vf")]
+position = Vector2(940, 550)
+cursor = NodePath("../Cursor")
+destType = 2
+buttonType = 1
+label = NodePath("../ImagesDest/Label")
+
+[node name="Label" parent="MarketingDest" index="1"]
+text = "marketing"
+
+[node name="Mascot" parent="." instance=ExtResource("5_usa8x")]
+
+[node name="GUI" parent="." node_paths=PackedStringArray("_fileSpawner") instance=ExtResource("4_lvrr6")]
+_fileSpawner = NodePath("../Controllers/FileSpawner")
+IncorrectPenalty = -5.0
+
+[connection signal="timeout" from="Controllers/FileSpawner" to="Controllers/FileSpawner" method="OnTimeout"]
+[connection signal="FileDeposited" from="Cursor" to="GUI" method="_on_cursor_file_deposited"]
+
+[editable path="Cursor"]
+[editable path="TrashDest"]
+[editable path="ImagesDest"]
+[editable path="MarketingDest"]

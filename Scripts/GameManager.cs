@@ -4,6 +4,10 @@ using System;
 public partial class GameManager : Control {
 	private ProgressBar _progressBar;
 	private Timer _timeLimit;
+	
+	[Export]
+	private FileSpawner _fileSpawner;
+	
 	private Label _timerLabel;
 	
 	[Export]
@@ -59,6 +63,12 @@ public partial class GameManager : Control {
 		
 		InProgress = true;
 		ElapsedTime = 0f;
+		_progressBar.Value = 0f;
+		
+		for (int i = 0; i < startingNumFiles; i++)
+			_fileSpawner.OnTimeout();
+		
+		_fileSpawner.Start(FileSpawnInterval);
 		if (TimeLimit > 0f)
 			_timeLimit.Start(TimeLimit);
 	}
@@ -67,7 +77,10 @@ public partial class GameManager : Control {
 	{
 		GD.Print("GAME OVER");
 		_timeLimit.Stop();
+		_fileSpawner.Stop();
 		InProgress = false;
+		
+		//TODO: new screen / effect based on win/loss
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -89,5 +102,11 @@ public partial class GameManager : Control {
 	private void _on_timer_timeout()
 	{
 		EndGame();
+	}
+	
+	private void _on_cursor_file_deposited(bool correct)
+	{
+		_progressBar.Value += correct ? CorrectValue : IncorrectPenalty;
+		GD.Print("value increase");
 	}
 }

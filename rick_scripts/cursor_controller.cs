@@ -15,6 +15,9 @@ public partial class cursor_controller : RigidBody2D
 
 	private bool controlsReversed = false;
 	private bool gravityEnabled = false;
+	
+	[Signal]
+	public delegate void FileDepositedEventHandler(bool correct);
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -102,6 +105,7 @@ public partial class cursor_controller : RigidBody2D
 					if (destButton.buttonType == GameButton.ButtonType.Destination)
 					{
 						bool result = draggedButton.Deposit(destButton);
+						EmitSignal(SignalName.FileDeposited, result);
 						GD.Print("drop correctly: " + result);
 						hoveredButtons.Remove(draggedButton);
 					}
