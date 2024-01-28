@@ -80,6 +80,8 @@ public partial class GameManager : Control {
 	
 	public void WinGame()
 	{
+		if (_progressButton.Disabled) return;
+
 		GD.Print("WIN GAME");
 		EndGame(true);
 	}
@@ -113,7 +115,7 @@ public partial class GameManager : Control {
 			else
 				_timerLabel.Text = string.Format("{0:00.00}", ElapsedTime);
 			
-			if (_progressBar.Value >= _progressBar.MaxValue) {
+			if (_progressButton.Disabled && _progressBar.Value >= _progressBar.MaxValue) {
 				OpenExit();
 			}
 		}
