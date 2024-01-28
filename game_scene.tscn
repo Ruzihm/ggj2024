@@ -34,9 +34,9 @@ position = Vector2(545, 282)
 wait_time = 0.07
 script = ExtResource("1_af5ns")
 Cursor = NodePath("../../Cursor")
-TrashFilenames = Array[String](["trash.txt", "Family Photos.png", "criminal_conspiracy_notes.doc", "passwords.do_not_save", "DELETE_ME.dat", "snappyJjokes.wav", ""])
-ArchiveFilenames = Array[String](["Q4_reports.xls", "Presentation_Final_FINAL.ppt", "TaxReturns2019_4.doc", "Location_Survey_1992.idgaf"])
-SpamFilenames = Array[String](["BuyMyDog.cool", "LOCAL_CATS_IN_YOUR_AREA.pdf", "IncreaseYourEnergy_NATURALLY.jpg"])
+TrashFilenames = Array[String](["trash.txt", "Family Photos.png", "criminal_conspiracy_notes.doc", "passwords.do_not_save", "DELETE_ME.dat", "snappyJokes.wav", "some_junk.avi"])
+ArchiveFilenames = Array[String](["Q4_reports.xls", "Presentation_Final_FINAL.ppt", "TaxReturns2019_4.doc", "Location_Survey_1992.idgaf", "ImportantDemo.zip", "SpecialProjects.mov"])
+SpamFilenames = Array[String](["BuyMyDog.cool", "LOCAL_CATS_IN_YOUR_AREA.pdf", "IncreaseYourEnergy_NATURALLY.jpg", "GameJamNow_AskMeHow.swf", "FreeCars_LEGIT_I_PROMISE.ppt", "Buy My Trading Cards.png"])
 FileIcons = Array[Texture]([ExtResource("2_q3eq2"), ExtResource("3_mk5qf")])
 fileScene = ExtResource("2_eh3vf")
 spawnRect = Rect2(800, 100, 250, 450)
@@ -137,7 +137,8 @@ taunt0 = "Hi, I'm Stapey! I'm here to help you with this menial task. Just drag 
 _fileSpawner = NodePath("../Controllers/FileSpawner")
 _gagController = NodePath("../Controllers/GagController")
 _mascot = NodePath("../Mascot")
-IncorrectPenalty = -5.0
+CorrectValue = 6.0
+IncorrectPenalty = -2.0
 TimeLimit = 300.0
 
 [node name="Exitbutton" parent="." node_paths=PackedStringArray("cursor", "sprite", "label") instance=ExtResource("2_eh3vf")]
