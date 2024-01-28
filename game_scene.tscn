@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cuy28bh33yhfl"]
+[gd_scene load_steps=12 format=3 uid="uid://cuy28bh33yhfl"]
 
 [ext_resource type="Script" path="res://rick_scripts/FileSpawner.cs" id="1_af5ns"]
 [ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_eh3vf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dhe4yw4dm7osg" path="res://Art/UI/Icons/trash.png" id="4_u43v1"]
 [ext_resource type="Texture2D" uid="uid://cxil0x8n7hbjv" path="res://Art/UI/Icons/folder.png" id="5_u5l4a"]
 [ext_resource type="PackedScene" uid="uid://b2excr0f7ovs4" path="res://mascot.tscn" id="5_usa8x"]
+[ext_resource type="Texture2D" uid="uid://dnk475wkrmlec" path="res://Art/UI/screen.png" id="9_xueuk"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hmngg"]
 b = Vector2(1150, 0)
@@ -24,9 +25,9 @@ position = Vector2(545, 282)
 wait_time = 5.0
 script = ExtResource("1_af5ns")
 Cursor = NodePath("../../Cursor")
-TrashFilenames = Array[String](["trash!", "trashhhhh", "so trash", "garbaggio"])
-ImagesFilenames = Array[String](["image", "im an image", "pic", "photoooooo"])
-MarketingFilenames = Array[String](["ad", "advertisement", "buy buy buys"])
+TrashFilenames = Array[String](["trash.txt", "family_photos.png", "criminal_conspiracy_notes.doc", "passwords.do_not_save"])
+ArchiveFilenames = Array[String](["Q4_reports.xls", "Presentation_final_FINAL.ppt", "TaxReturns2019_4.doc", "Location_Survey_1992.idgaf"])
+SpamFilenames = Array[String](["BuyMyDog.cool", "LOCAL_CATS_IN_YOUR_AREA.pdf", "IncreaseYourEnergy_NATURALLY.jpg"])
 FileIcons = Array[Texture]([ExtResource("2_q3eq2")])
 fileScene = ExtResource("2_eh3vf")
 spawnRect = Rect2(-200, -200, 100, 400)
@@ -62,40 +63,46 @@ shape = SubResource("SegmentShape2D_8y0x1")
 debug_color = Color(0.380392, 0.47451, 1, 0.419608)
 
 [node name="TrashDest" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("2_eh3vf")]
-position = Vector2(940, 150)
+position = Vector2(1024, 187)
 cursor = NodePath("../Cursor")
 buttonType = 1
 
 [node name="Label" parent="TrashDest" index="1"]
-text = "trash"
+z_index = -1
+text = "Trash"
 
 [node name="Sprite2D" parent="TrashDest" index="2"]
+z_index = -1
 texture = ExtResource("4_u43v1")
 
-[node name="ImagesDest" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("2_eh3vf")]
-position = Vector2(940, 350)
+[node name="ArchiveDest" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("2_eh3vf")]
+position = Vector2(1024, 380)
 cursor = NodePath("../Cursor")
 destType = 1
 buttonType = 1
 
-[node name="Label" parent="ImagesDest" index="1"]
-text = "images
+[node name="Label" parent="ArchiveDest" index="1"]
+z_index = -1
+text = "Archive
 "
 
-[node name="Sprite2D" parent="ImagesDest" index="2"]
+[node name="Sprite2D" parent="ArchiveDest" index="2"]
+z_index = -1
 texture = ExtResource("5_u5l4a")
 
-[node name="MarketingDest" parent="." node_paths=PackedStringArray("cursor", "label") instance=ExtResource("2_eh3vf")]
-position = Vector2(940, 550)
+[node name="SpamDest" parent="." node_paths=PackedStringArray("cursor", "label") instance=ExtResource("2_eh3vf")]
+position = Vector2(1024, 579)
 cursor = NodePath("../Cursor")
 destType = 2
 buttonType = 1
-label = NodePath("../ImagesDest/Label")
+label = NodePath("../ArchiveDest/Label")
 
-[node name="Label" parent="MarketingDest" index="1"]
-text = "marketing"
+[node name="Label" parent="SpamDest" index="1"]
+z_index = -1
+text = "Spam"
 
-[node name="Sprite2D" parent="MarketingDest" index="2"]
+[node name="Sprite2D" parent="SpamDest" index="2"]
+z_index = -1
 texture = ExtResource("5_u5l4a")
 
 [node name="Mascot" parent="." instance=ExtResource("5_usa8x")]
@@ -104,10 +111,16 @@ texture = ExtResource("5_u5l4a")
 _fileSpawner = NodePath("../Controllers/FileSpawner")
 IncorrectPenalty = -5.0
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("9_xueuk")
+
 [connection signal="timeout" from="Controllers/FileSpawner" to="Controllers/FileSpawner" method="OnTimeout"]
 [connection signal="FileDeposited" from="Cursor" to="GUI" method="_on_cursor_file_deposited"]
 
 [editable path="Cursor"]
 [editable path="TrashDest"]
-[editable path="ImagesDest"]
-[editable path="MarketingDest"]
+[editable path="ArchiveDest"]
+[editable path="SpamDest"]

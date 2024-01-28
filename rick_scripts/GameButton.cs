@@ -19,8 +19,8 @@ public partial class GameButton : Area2D
 	public enum DestType
 	{
 		Trash,
-		Images,
-		Marketing
+		Archive,
+		Spam
 	}
 
 	[Export]

@@ -11,10 +11,10 @@ public partial class FileSpawner : Timer
 	public Godot.Collections.Array<string> TrashFilenames;
 
 	[Export]
-	public Godot.Collections.Array<string> ImagesFilenames;
+	public Godot.Collections.Array<string> ArchiveFilenames;
 
 	[Export]
-	public Godot.Collections.Array<string> MarketingFilenames;
+	public Godot.Collections.Array<string> SpamFilenames;
 
 	[Export]
 	public Godot.Collections.Array<Texture2D> FileIcons;
@@ -39,12 +39,12 @@ public partial class FileSpawner : Timer
 				nameArray = TrashFilenames;
 				break;
 			case 1:
-				destType = GameButton.DestType.Images;
-				nameArray = ImagesFilenames;
+				destType = GameButton.DestType.Archive;
+				nameArray = ArchiveFilenames;
 				break;
 			case 2:
-				destType = GameButton.DestType.Marketing;
-				nameArray = MarketingFilenames;
+				destType = GameButton.DestType.Spam;
+				nameArray = SpamFilenames;
 				break;
 		}
 

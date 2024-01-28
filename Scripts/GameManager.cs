@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public partial class GameManager : Control {
-	private ProgressBar _progressBar;
+	private TextureProgressBar _progressBar;
 	private Timer _timeLimit;
 	
 	[Export]
@@ -31,7 +31,7 @@ public partial class GameManager : Control {
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
-		_progressBar = GetNode<ProgressBar>("ProgressBar");
+		_progressBar = GetNode<TextureProgressBar>("TextureProgressBar");
 		_timeLimit = GetNode<Timer>("Timer");
 		_timerLabel = GetNode<Label>("TimerLabel");
 	}
