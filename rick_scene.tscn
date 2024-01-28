@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://rick_scripts/FileSpawner.cs" id="1_rgwno"]
 [ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_6k77y"]
-[ext_resource type="PackedScene" uid="uid://bq84gq33yoryu" path="res://rick_scripts/cursor.tscn" id="2_cydp2"]
+[ext_resource type="PackedScene" uid="uid://cu4ilqyv5kok4" path="res://rick_scripts/cursor.tscn" id="2_cydp2"]
 [ext_resource type="Script" path="res://Scripts/Gags/GagController.cs" id="3_jctlq"]
 [ext_resource type="PackedScene" uid="uid://tu04lvh6ja7y" path="res://Scripts/Gags/CaptchaGag.tscn" id="6_sfmjw"]
-[ext_resource type="PackedScene" path="res://mascot.tscn" id="8_f7aoe"]
+[ext_resource type="PackedScene" uid="uid://b2excr0f7ovs4" path="res://mascot.tscn" id="8_f7aoe"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hmngg"]
 b = Vector2(1150, 0)
@@ -101,12 +101,11 @@ buttonType = 1
 text = "images
 "
 
-[node name="MarketingDest" parent="." node_paths=PackedStringArray("cursor", "label") instance=ExtResource("2_6k77y")]
+[node name="MarketingDest" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("2_6k77y")]
 position = Vector2(940, 550)
 cursor = NodePath("../Cursor")
 destType = 2
 buttonType = 1
-label = NodePath("../ImagesDest/Label")
 
 [node name="Label" parent="MarketingDest" index="1"]
 text = "marketing"
