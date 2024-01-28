@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Gags/GagController.cs" id="5_hc13m"]
 [ext_resource type="Texture2D" uid="uid://cxil0x8n7hbjv" path="res://Art/UI/Icons/folder.png" id="5_u5l4a"]
 [ext_resource type="PackedScene" uid="uid://b2excr0f7ovs4" path="res://mascot.tscn" id="5_usa8x"]
-[ext_resource type="PackedScene" uid="uid://tu04lvh6ja7y" path="res://Scripts/Gags/CaptchaGag.tscn" id="6_52kh7"]
+[ext_resource type="PackedScene" path="res://Scripts/Gags/CaptchaGag.tscn" id="6_52kh7"]
 [ext_resource type="PackedScene" uid="uid://cylqcoyk0hovh" path="res://Scripts/Gags/ReverseControlsGag.tscn" id="7_22adk"]
 [ext_resource type="PackedScene" uid="uid://bsxjapxqktirf" path="res://Scripts/Gags/CursorGravityGag.tscn" id="8_goo3c"]
 
@@ -122,8 +122,9 @@ texture = ExtResource("5_u5l4a")
 position = Vector2(1088, 532)
 taunt0 = ""
 
-[node name="GUI" parent="." node_paths=PackedStringArray("_fileSpawner") instance=ExtResource("4_lvrr6")]
+[node name="GUI" parent="." node_paths=PackedStringArray("_fileSpawner", "_mascot") instance=ExtResource("4_lvrr6")]
 _fileSpawner = NodePath("../Controllers/FileSpawner")
+_mascot = NodePath("../Mascot")
 StartingNumFiles = 3
 IncorrectPenalty = -5.0
 

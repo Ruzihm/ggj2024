@@ -38,26 +38,6 @@ public partial class Mascot : Node2D {
 		_taunts = new Godot.Collections.Array<string>{ taunt0 };//, taunt1, taunt2, taunt3 };
 	}
 
-	public override void _Input(InputEvent @event) {
-		//Just Debug to test stuff
-		if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
-			if (keyEvent.Keycode == Key.Q) {
-				GD.Print("Q was pressed");
-				PlayAnimation("idle", 0f, 5f);
-			}
-			if (keyEvent.Keycode == Key.W) {
-				GD.Print("W was pressed");
-				Vector2 mousePos = new Vector2(500f, 500f);//GetGlobalMousePosition();
-				SetTweenTarget(mousePos);
-			}
-			if (keyEvent.Keycode == Key.E) {
-				GD.Print("E was pressed");
-				PlayText(_taunts[(int)(GD.Randi() % _taunts.Count)], 5f, 60f);
-			}
-			
-		}
-	}
-
 	public override void _PhysicsProcess(double delta) {
 		Position = Position.Lerp(TweenTarget, (float)delta * FollowSpeed);
 	}
@@ -115,6 +95,9 @@ public partial class Mascot : Node2D {
 	private void _on_sprite_animation_finished()
 	{
 		if(_animatedSprite2D.Animation == "Ascend")
+		{
 			_animatedSprite2D.Play("Idle");
+			PlayText(_taunts[0], 5f, 30f);
+		}
 	}
 }

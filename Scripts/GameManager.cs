@@ -10,6 +10,9 @@ public partial class GameManager : Control {
 	[Export]
 	private FileSpawner _fileSpawner;
 	
+	[Export]
+	private Mascot _mascot;
+	
 	private Label _timerLabel;
 	
 	[Export]
@@ -58,7 +61,7 @@ public partial class GameManager : Control {
 			_timerLabel.Text = string.Format("{0:00.00}", ElapsedTime);
 		
 		_progressBar.Value = 0f;
-		_progressButton.Disabled = true;
+		_progressButton.Disabled = false;//true;
 		_progressLabel.Text = string.Format("{0}%", _progressBar.Value);
 		
 		for (int i = 0; i < startingNumFiles; i++)
@@ -72,6 +75,7 @@ public partial class GameManager : Control {
 	
 	public void WinGame()
 	{
+		GD.Print("WIN GAME");
 		EndGame(true);
 	}
 	
@@ -83,6 +87,15 @@ public partial class GameManager : Control {
 		InProgress = false;
 		
 		//TODO: new screen / effect based on win/loss
+		if (win)
+		{
+			_mascot.PlayText("NO, THE FIRE!!!!\nIT BURNS...", 5f, 10f);
+			_mascot.PlayAnimation("Descend", 6f, 0f);
+		}
+		else
+		{
+			
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -109,7 +122,10 @@ public partial class GameManager : Control {
 	
 	private void _on_cursor_file_deposited(bool correct)
 	{
-		_progressBar.Value += correct ? CorrectValue : IncorrectPenalty;
-		_progressLabel.Text = string.Format("{0}%", _progressBar.Value);
+		if (_progressBar.Value < _progressBar.MaxValue)
+		{
+			_progressBar.Value += correct ? CorrectValue : IncorrectPenalty;
+			_progressLabel.Text = string.Format("{0}%", _progressBar.Value);
+		}
 	}
 }

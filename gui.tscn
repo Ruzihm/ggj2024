@@ -69,7 +69,6 @@ offset_left = -285.0
 offset_top = 136.0
 offset_right = -231.0
 offset_bottom = 158.0
-disabled = true
 texture_normal = ExtResource("5_mshk0")
 texture_pressed = ExtResource("6_rim43")
 texture_disabled = ExtResource("6_rim43")
