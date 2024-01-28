@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuy28bh33yhfl"]
+[gd_scene load_steps=10 format=3 uid="uid://cuy28bh33yhfl"]
 
 [ext_resource type="Script" path="res://rick_scripts/FileSpawner.cs" id="1_af5ns"]
 [ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_eh3vf"]
 [ext_resource type="PackedScene" uid="uid://cu4ilqyv5kok4" path="res://rick_scripts/cursor.tscn" id="3_1xq7c"]
 [ext_resource type="PackedScene" uid="uid://bajxyvngdtd7s" path="res://gui.tscn" id="4_lvrr6"]
+[ext_resource type="Texture2D" uid="uid://dhe4yw4dm7osg" path="res://Art/UI/Icons/trash.png" id="4_u43v1"]
+[ext_resource type="Texture2D" uid="uid://cxil0x8n7hbjv" path="res://Art/UI/Icons/folder.png" id="5_u5l4a"]
 [ext_resource type="PackedScene" uid="uid://b2excr0f7ovs4" path="res://mascot.tscn" id="5_usa8x"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hmngg"]
@@ -65,6 +67,10 @@ buttonType = 1
 [node name="Label" parent="TrashDest" index="1"]
 text = "trash"
 
+[node name="Sprite2D" parent="TrashDest" index="2"]
+position = Vector2(0, -33)
+texture = ExtResource("4_u43v1")
+
 [node name="ImagesDest" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("2_eh3vf")]
 position = Vector2(940, 350)
 cursor = NodePath("../Cursor")
@@ -75,6 +81,10 @@ buttonType = 1
 text = "images
 "
 
+[node name="Sprite2D" parent="ImagesDest" index="2"]
+position = Vector2(0, -33)
+texture = ExtResource("5_u5l4a")
+
 [node name="MarketingDest" parent="." node_paths=PackedStringArray("cursor", "label") instance=ExtResource("2_eh3vf")]
 position = Vector2(940, 550)
 cursor = NodePath("../Cursor")
@@ -84,6 +94,10 @@ label = NodePath("../ImagesDest/Label")
 
 [node name="Label" parent="MarketingDest" index="1"]
 text = "marketing"
+
+[node name="Sprite2D" parent="MarketingDest" index="2"]
+position = Vector2(0, -33)
+texture = ExtResource("5_u5l4a")
 
 [node name="Mascot" parent="." instance=ExtResource("5_usa8x")]
 

@@ -18,5 +18,6 @@ position = Vector2(-14, -6)
 polygon = PackedVector2Array(15, 6, 15, 6, 15, 26, 20, 23, 25, 32, 27, 32, 22, 23, 29, 23)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
 position = Vector2(11, 12)
 texture = ExtResource("2_bt3gx")
