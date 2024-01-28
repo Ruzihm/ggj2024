@@ -7,5 +7,7 @@ public partial class BaseGag : Node
 	[Signal]
 	public delegate void OnCompleteEventHandler();
 
-	public cursor_controller Cursor { get; set; }
+	public cursor_controller cursor { get; set; }
+
+	public Mascot mascot { get; set; }
 }
