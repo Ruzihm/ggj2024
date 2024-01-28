@@ -4,6 +4,8 @@ using System;
 public partial class GameManager : Control {
 	private TextureProgressBar _progressBar;
 	private Timer _timeLimit;
+	private TextureButton _progressButton;
+	private Label _progressLabel;
 	
 	[Export]
 	private FileSpawner _fileSpawner;
@@ -34,24 +36,10 @@ public partial class GameManager : Control {
 		_progressBar = GetNode<TextureProgressBar>("TextureProgressBar");
 		_timeLimit = GetNode<Timer>("Timer");
 		_timerLabel = GetNode<Label>("TimerLabel");
-	}
-	
-	public override void _Input(InputEvent @event) {
-		//Just Debug to test stuff
-		if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
-			if (keyEvent.Keycode == Key.Z) {
-				GD.Print("Z was pressed");
-				StartGame(StartingNumFiles, FileSpawnInterval, CorrectValue, IncorrectPenalty, 0f);
-			}
-			if (keyEvent.Keycode == Key.X) {
-				GD.Print("X was pressed");
-				StartGame(StartingNumFiles, FileSpawnInterval, CorrectValue, IncorrectPenalty, 600f);
-			}
-			if (keyEvent.Keycode == Key.M) {
-				GD.Print("M was pressed");
-				EndGame();
-			}
-		}
+		_progressButton = GetNode<TextureButton>("Background/TextureButton");
+		_progressLabel = GetNode<Label>("Background/TextureButton/ProgressLabel");
+		
+		StartGame(StartingNumFiles, FileSpawnInterval, CorrectValue, IncorrectPenalty, TimeLimit);
 	}
 	
 	public void StartGame(int startingNumFiles, float fileSpawnInterval, float correctValue, float incorrectPenalty, float timeLimit) {
@@ -63,17 +51,31 @@ public partial class GameManager : Control {
 		
 		InProgress = true;
 		ElapsedTime = 0f;
+		
+		if (TimeLimit > 0f)
+			_timerLabel.Text = string.Format("{0:00.00}", _timeLimit.TimeLeft);
+		else
+			_timerLabel.Text = string.Format("{0:00.00}", ElapsedTime);
+		
 		_progressBar.Value = 0f;
+		_progressButton.Disabled = true;
+		_progressLabel.Text = string.Format("{0}%", _progressBar.Value);
 		
 		for (int i = 0; i < startingNumFiles; i++)
 			_fileSpawner.OnTimeout();
-		
+			
 		_fileSpawner.Start(FileSpawnInterval);
+		
 		if (TimeLimit > 0f)
 			_timeLimit.Start(TimeLimit);
 	}
 	
-	public void EndGame()
+	public void WinGame()
+	{
+		EndGame(true);
+	}
+	
+	public void EndGame(bool win)
 	{
 		GD.Print("GAME OVER");
 		_timeLimit.Stop();
@@ -94,19 +96,20 @@ public partial class GameManager : Control {
 				_timerLabel.Text = string.Format("{0:00.00}", ElapsedTime);
 			
 			if (_progressBar.Value >= _progressBar.MaxValue) {
-				EndGame();
+				_progressButton.Disabled = false;
+				_progressLabel.Text = "EXIT";
 			}
 		}
 	}
 	
 	private void _on_timer_timeout()
 	{
-		EndGame();
+		EndGame(false);
 	}
 	
 	private void _on_cursor_file_deposited(bool correct)
 	{
 		_progressBar.Value += correct ? CorrectValue : IncorrectPenalty;
-		GD.Print("value increase");
+		_progressLabel.Text = string.Format("{0}%", _progressBar.Value);
 	}
 }

@@ -1,18 +1,31 @@
-[gd_scene load_steps=42 format=3 uid="uid://b2excr0f7ovs4"]
+[gd_scene load_steps=65 format=3 uid="uid://b2excr0f7ovs4"]
 
 [ext_resource type="Script" path="res://Scripts/Mascot.cs" id="1_da357"]
+[ext_resource type="Texture2D" uid="uid://ks1rqucldnf" path="res://Art/Stapey/Ascend/stapeyAscend1.png" id="2_6ydkq"]
 [ext_resource type="Texture2D" uid="uid://c68nsuecjd08g" path="res://Art/Stapey/Chatter/stapeyChatter1.png" id="2_t4kuc"]
 [ext_resource type="Texture2D" uid="uid://btjiufp2q0dkq" path="res://Art/Stapey/Chatter/stapeyChatter2.png" id="3_nj0l4"]
+[ext_resource type="Texture2D" uid="uid://b4gd7i21gbtcb" path="res://Art/Stapey/Ascend/stapeyAscend2.png" id="3_qda54"]
+[ext_resource type="Texture2D" uid="uid://bidw50tdmel83" path="res://Art/Stapey/Ascend/stapeyAscend3.png" id="4_ridsw"]
 [ext_resource type="Texture2D" uid="uid://qmtgx0458vlt" path="res://Art/Stapey/Chatter/stapeyChatter3.png" id="4_s1msv"]
 [ext_resource type="Texture2D" uid="uid://ntxbjycxsv4g" path="res://Art/Stapey/Chatter/stapeyChatter4.png" id="5_jpg3c"]
+[ext_resource type="Texture2D" uid="uid://mngy8oji4y4c" path="res://Art/Stapey/Ascend/stapeyAscend4.png" id="5_qv1vj"]
+[ext_resource type="Texture2D" uid="uid://cya7wxarr7716" path="res://Art/Stapey/Ascend/stapeyAscend5.png" id="6_gkt1e"]
 [ext_resource type="Texture2D" uid="uid://bsbheyu2513l1" path="res://Art/Stapey/Chatter/stapeyChatter5.png" id="6_ncklm"]
 [ext_resource type="Texture2D" uid="uid://dd3twlmyfl763" path="res://Art/Stapey/Chatter/stapeyChatter6.png" id="7_0uybe"]
+[ext_resource type="Texture2D" uid="uid://bfmlh2svcwdid" path="res://Art/Stapey/Ascend/stapeyAscend6.png" id="7_scmjh"]
+[ext_resource type="Texture2D" uid="uid://bjksjsw11kjix" path="res://Art/Stapey/Ascend/stapeyAscend7.png" id="8_fctwo"]
 [ext_resource type="Texture2D" uid="uid://dnjiaibbwhhoa" path="res://Art/Stapey/Chatter/stapeyChatter7.png" id="8_pmler"]
 [ext_resource type="Texture2D" uid="uid://dnon1dia8wgb0" path="res://Art/Stapey/Chatter/stapeyChatter8.png" id="9_5w45f"]
+[ext_resource type="Texture2D" uid="uid://bkb814eqp4ut3" path="res://Art/Stapey/Ascend/stapeyAscend8.png" id="9_7j14a"]
+[ext_resource type="Texture2D" uid="uid://dj22oa2mnq4so" path="res://Art/Stapey/Ascend/stapeyAscend9.png" id="10_al608"]
 [ext_resource type="Texture2D" uid="uid://b10culo256r4c" path="res://Art/Stapey/Chomp/stapeyChomp1.png" id="10_b055h"]
+[ext_resource type="Texture2D" uid="uid://qjpsveh5hiu0" path="res://Art/Stapey/Ascend/stapeyAscend10.png" id="11_2uf8h"]
 [ext_resource type="Texture2D" uid="uid://c4ud17u2jd7qe" path="res://Art/Stapey/Chomp/stapeyChomp2.png" id="11_6jxqx"]
 [ext_resource type="Texture2D" uid="uid://duv240obakhm1" path="res://Art/Stapey/Chomp/stapeyChomp3.png" id="12_me0l4"]
+[ext_resource type="Texture2D" uid="uid://b6jjsqbpqxc3k" path="res://Art/Stapey/Ascend/stapeyAscend11.png" id="12_umbei"]
 [ext_resource type="Texture2D" uid="uid://nnw3ab3rncmi" path="res://Art/Stapey/Chomp/stapeyChomp4.png" id="13_d5ywv"]
+[ext_resource type="Texture2D" uid="uid://bq7ugo27ujchg" path="res://Art/Stapey/Ascend/stapeyAscend12.png" id="13_mw2yb"]
+[ext_resource type="Texture2D" uid="uid://dcjtddfqq6boa" path="res://Art/Stapey/stapeyBASE.png" id="14_7q6pb"]
 [ext_resource type="Texture2D" uid="uid://cgqdggdvqew2j" path="res://Art/Stapey/Chomp/stapeyChomp5.png" id="14_r8eq3"]
 [ext_resource type="Texture2D" uid="uid://df1vtdc26dyo7" path="res://Art/Stapey/Chomp/stapeyChomp6.png" id="15_ja2yb"]
 [ext_resource type="Texture2D" uid="uid://bywq5sa65mfc1" path="res://Art/Stapey/Chomp/stapeyChomp7.png" id="16_dvnnj"]
@@ -31,17 +44,79 @@
 [ext_resource type="Texture2D" uid="uid://cbf7uusinedvd" path="res://Art/Stapey/Left/stapeyLookLEFT4.png" id="29_bqhkx"]
 [ext_resource type="Texture2D" uid="uid://b24v77qmlxinv" path="res://Art/Stapey/Right/stapeyLookRIGHT1.png" id="30_i3gd6"]
 [ext_resource type="Texture2D" uid="uid://b8rinl3qpmhy5" path="res://Art/Stapey/Right/stapeyLookRIGHT2.png" id="31_iam3u"]
+[ext_resource type="Texture2D" uid="uid://x35k6b2rqq64" path="res://Art/Stapey/Descend/stapeyDescend1.png" id="31_xao7y"]
 [ext_resource type="Texture2D" uid="uid://dmgtxnxi14ih7" path="res://Art/Stapey/Right/stapeyLookRIGHT3.png" id="32_ad777"]
+[ext_resource type="Texture2D" uid="uid://5njgn03kui3n" path="res://Art/Stapey/Descend/stapeyDescend2.png" id="32_rg20y"]
+[ext_resource type="Texture2D" uid="uid://5qaajq2tl1bu" path="res://Art/Stapey/Descend/stapeyDescend3.png" id="33_afyrv"]
 [ext_resource type="Texture2D" uid="uid://cmjh8b75newqx" path="res://Art/Stapey/Right/stapeyLookRIGHT4.png" id="33_pgy8l"]
+[ext_resource type="Texture2D" uid="uid://6fw0r54rvfuj" path="res://Art/Stapey/Descend/stapeyDescend4.png" id="34_5h08j"]
 [ext_resource type="Texture2D" uid="uid://damplpncptoi5" path="res://Art/Stapey/Up/stapeyLookUP1.png" id="34_v2qpl"]
+[ext_resource type="Texture2D" uid="uid://bvkewbm3r16wx" path="res://Art/Stapey/Descend/stapeyDescend5.png" id="35_ly7hm"]
 [ext_resource type="Texture2D" uid="uid://dvg7e6rbjppii" path="res://Art/Stapey/Up/stapeyLookUP2.png" id="35_uf605"]
+[ext_resource type="Texture2D" uid="uid://c8hv7x6o1c20" path="res://Art/Stapey/Descend/stapeyDescend6.png" id="36_01rt8"]
 [ext_resource type="Texture2D" uid="uid://v7rs8njccias" path="res://Art/Stapey/Up/stapeyLookUP3.png" id="36_bs6v4"]
+[ext_resource type="Texture2D" uid="uid://caargcsf4yky6" path="res://Art/Stapey/Descend/stapeyDescend7.png" id="37_hupl3"]
 [ext_resource type="Texture2D" uid="uid://ccqvtjjghelqa" path="res://Art/Stapey/Up/stapeyLookUP4.png" id="37_x3211"]
+[ext_resource type="Texture2D" uid="uid://bvrhgh4uqwnbr" path="res://Art/Stapey/Descend/stapeyDescend8.png" id="38_fmk0x"]
 [ext_resource type="Texture2D" uid="uid://3m80h1nj5jfw" path="res://Art/UI/NineSliceSprites/speechbubble.png" id="38_uu54i"]
 [ext_resource type="FontFile" uid="uid://c7kbtmrc327h4" path="res://Art/Fonts/BestTen-DOT.otf" id="39_7nbn3"]
+[ext_resource type="Texture2D" uid="uid://cnke2akmbsh0g" path="res://Art/Stapey/Descend/stapeyDescend9.png" id="39_kja32"]
+[ext_resource type="Texture2D" uid="uid://byeft7akwyq3u" path="res://Art/Stapey/Descend/stapeyDescend10.png" id="40_1yi5b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4mhoa"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6ydkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qda54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ridsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qv1vj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gkt1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_scmjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fctwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7j14a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_al608")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2uf8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_umbei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mw2yb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7q6pb")
+}],
+"loop": false,
+"name": &"Ascend",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_7q6pb")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_t4kuc")
@@ -107,6 +182,41 @@ animations = [{
 }],
 "loop": false,
 "name": &"Chomp",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_xao7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_rg20y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_afyrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_5h08j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ly7hm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_01rt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_hupl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_fmk0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_kja32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_1yi5b")
+}],
+"loop": false,
+"name": &"Descend",
 "speed": 14.0
 }, {
 "frames": [{
@@ -226,12 +336,15 @@ Label/font_sizes/font_size = 16
 
 [node name="Mascot" type="Node2D"]
 script = ExtResource("1_da357")
+taunt0 = "Hi, I'm Stapey! I'm here to help you with this menial task. Just drag the files from the right of the screen to the folders on the left.
+
+...When you're done, I'll be sent back to hell."
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4mhoa")
-animation = &"Right"
-autoplay = "Idle"
+animation = &"Descend"
+autoplay = "Ascend"
 
 [node name="Node2D" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -248,35 +361,7 @@ patch_margin_right = 55
 patch_margin_bottom = 47
 
 [node name="DialogText" type="Label" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-editor_description = ""
-visible = true
-modulate = Color(1, 1, 1, 1)
-self_modulate = Color(1, 1, 1, 1)
-show_behind_parent = false
-top_level = false
-clip_children = 0
-light_mask = 1
-visibility_layer = 1
-z_index = 0
-z_as_relative = true
-y_sort_enabled = false
-texture_filter = 0
-texture_repeat = 0
-material = null
-use_parent_material = false
-clip_contents = false
-custom_minimum_size = Vector2(0, 0)
-layout_direction = 0
-layout_mode = 3
 anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -265.0
@@ -285,44 +370,10 @@ offset_right = -62.0
 offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 0.0
-scale = Vector2(1, 1)
-pivot_offset = Vector2(0, 0)
-size_flags_horizontal = 1
-size_flags_vertical = 4
-size_flags_stretch_ratio = 1.0
-auto_translate = true
-localize_numeral_system = true
-tooltip_text = ""
-focus_neighbor_left = NodePath("")
-focus_neighbor_top = NodePath("")
-focus_neighbor_right = NodePath("")
-focus_neighbor_bottom = NodePath("")
-focus_next = NodePath("")
-focus_previous = NodePath("")
-focus_mode = 0
-mouse_filter = 2
-mouse_force_pass_scroll_events = true
-mouse_default_cursor_shape = 0
 theme = SubResource("Theme_ludyi")
-theme_type_variation = &""
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-label_settings = null
-horizontal_alignment = 0
-vertical_alignment = 0
+text = "Hi! I'm Stapey.
+
+Have you tried blood-doping aquarium cleaner?
+
+Might not help, but it couldn't hurt."
 autowrap_mode = 3
-justification_flags = 163
-clip_text = false
-text_overrun_behavior = 0
-uppercase = false
-tab_stops = PackedFloat32Array()
-lines_skipped = 0
-max_lines_visible = -1
-visible_characters = -1
-visible_characters_behavior = 0
-visible_ratio = 1.0
-text_direction = 0
-language = ""
-structured_text_bidi_override = 0
-structured_text_bidi_override_options = []
-script = null

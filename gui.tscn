@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bajxyvngdtd7s"]
+[gd_scene load_steps=9 format=3 uid="uid://bajxyvngdtd7s"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_iujce"]
 [ext_resource type="FontFile" uid="uid://lnxopsval0er" path="res://Art/Fonts/DTM-Mono.otf" id="2_ap257"]
-[ext_resource type="Texture2D" uid="uid://dve4md6visycp" path="res://Art/UI/NineSliceSprites/windowInactive.png" id="3_rwj7n"]
+[ext_resource type="Texture2D" uid="uid://b0r74g51clhvx" path="res://Art/UI/screenWithBottomBar.png" id="4_pwqoe"]
+[ext_resource type="Texture2D" uid="uid://dvx8e7bx6nchh" path="res://Art/UI/Icons/logo.png" id="5_g00xp"]
+[ext_resource type="Texture2D" uid="uid://crpg31l4p6m8q" path="res://Art/UI/NineSliceSprites/button1.png" id="5_mshk0"]
+[ext_resource type="Texture2D" uid="uid://bjkysq2vbc2h0" path="res://Art/UI/NineSliceSprites/button1Push.png" id="6_rim43"]
 
 [sub_resource type="Theme" id="Theme_hmkie"]
 default_font = ExtResource("2_ap257")
+
+[sub_resource type="Theme" id="Theme_kulfn"]
+default_font = ExtResource("2_ap257")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 12
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -26,109 +34,65 @@ theme = SubResource("Theme_hmkie")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_right = 576.0
-offset_bottom = 40.0
+offset_left = 75.0
+offset_top = 294.0
+offset_right = 529.0
+offset_bottom = 324.0
 nine_patch_stretch = true
 stretch_margin_left = 3
 stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 27
-texture_under = ExtResource("3_rwj7n")
 
 [node name="TimerLabel" type="Label" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-editor_description = ""
-visible = true
-modulate = Color(1, 1, 1, 1)
-self_modulate = Color(1, 1, 1, 1)
-show_behind_parent = false
-top_level = false
-clip_children = 0
-light_mask = 1
-visibility_layer = 1
-z_index = 0
-z_as_relative = true
-y_sort_enabled = false
-texture_filter = 0
-texture_repeat = 0
-material = null
-use_parent_material = false
-clip_contents = false
-custom_minimum_size = Vector2(0, 0)
-layout_direction = 0
 layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 553.0
-offset_top = 85.0
-offset_right = 593.0
-offset_bottom = 108.0
-grow_horizontal = 1
-grow_vertical = 1
-rotation = 0.0
-scale = Vector2(1, 1)
-pivot_offset = Vector2(0, 0)
-size_flags_horizontal = 1
-size_flags_vertical = 4
-size_flags_stretch_ratio = 1.0
-auto_translate = true
-localize_numeral_system = true
-tooltip_text = ""
-focus_neighbor_left = NodePath("")
-focus_neighbor_top = NodePath("")
-focus_neighbor_right = NodePath("")
-focus_neighbor_bottom = NodePath("")
-focus_next = NodePath("")
-focus_previous = NodePath("")
-focus_mode = 0
-mouse_filter = 2
-mouse_force_pass_scroll_events = true
-mouse_default_cursor_shape = 0
-theme = null
-theme_type_variation = &""
-text = "99.99"
-label_settings = null
-horizontal_alignment = 0
-vertical_alignment = 0
-autowrap_mode = 0
-justification_flags = 163
-clip_text = false
-text_overrun_behavior = 0
-uppercase = false
-tab_stops = PackedFloat32Array()
-lines_skipped = 0
-max_lines_visible = -1
-visible_characters = -1
-visible_characters_behavior = 0
-visible_ratio = 1.0
-text_direction = 0
-language = ""
-structured_text_bidi_override = 0
-structured_text_bidi_override_options = []
-script = null
+offset_left = 524.0
+offset_top = 298.0
+offset_right = 565.0
+offset_bottom = 321.0
+theme = SubResource("Theme_kulfn")
+text = "99:99"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 600.0
 one_shot = true
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-visible = false
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(288, 162)
+texture = ExtResource("4_pwqoe")
+
+[node name="TextureButton" type="TextureButton" parent="Background"]
+offset_left = -285.0
+offset_top = 136.0
+offset_right = -231.0
+offset_bottom = 158.0
+disabled = true
+texture_normal = ExtResource("5_mshk0")
+texture_pressed = ExtResource("6_rim43")
+texture_disabled = ExtResource("6_rim43")
+
+[node name="ProgressLabel" type="Label" parent="Background/TextureButton"]
 layout_mode = 0
-offset_right = 803.0
-offset_bottom = 410.0
-texture = ExtResource("3_rwj7n")
-region_rect = Rect2(2, 6, 60, 52)
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 27
+offset_left = 16.5
+offset_top = -0.5
+offset_right = 53.5
+offset_bottom = 22.5
+theme = SubResource("Theme_kulfn")
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/TextureButton"]
+position = Vector2(10, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_g00xp")
+
+[node name="TimeBG" type="Sprite2D" parent="Background"]
+position = Vector2(257, 147.5)
+texture = ExtResource("6_rim43")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Background/TextureButton" to="." method="WinGame"]

@@ -10,13 +10,32 @@ public partial class Mascot : Node2D {
 	[Export]
 	private float FollowSpeed = 4.0f;
 	
+	// Super hacky shit
+	[Export(PropertyHint.MultilineText)]
+	private string taunt0;
+	
+	[Export(PropertyHint.MultilineText)]
+	private string taunt1;
+	
+	[Export(PropertyHint.MultilineText)]
+	private string taunt2;
+	
+	[Export(PropertyHint.MultilineText)]
+	private string taunt3;
+	
+	private Godot.Collections.Array<string> _taunts;
+	
 	private Vector2 TweenTarget;
+	private bool playingText = false;
 
 	public override void _Ready() {
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("Sprite");
-		_dialogBox = GetNode<NinePatchRect>("DialogBox");
-		_dialogText = GetNode<Label>("DialogBox/DialogText");
+		_dialogBox = GetNode<NinePatchRect>("Node2D/DialogBox");
+		_dialogText = GetNode<Label>("DialogText");
 		TweenTarget = Position;
+		_dialogText.VisibleCharacters = 0;
+		_dialogBox.Visible = false;
+		_taunts = new Godot.Collections.Array<string>{ taunt0 };//, taunt1, taunt2, taunt3 };
 	}
 
 	public override void _Input(InputEvent @event) {
@@ -33,8 +52,9 @@ public partial class Mascot : Node2D {
 			}
 			if (keyEvent.Keycode == Key.E) {
 				GD.Print("E was pressed");
-				PlayText("TEST text goes here stupid", 5f, 10f);
+				PlayText(_taunts[(int)(GD.Randi() % _taunts.Count)], 5f, 60f);
 			}
+			
 		}
 	}
 
@@ -52,10 +72,12 @@ public partial class Mascot : Node2D {
 			await Task.Delay(startDelayMS);
 		}
 		_animatedSprite2D.Play(animationName);
+		
 		if (stopAfterSeconds > 0f) {
 			int stopDelayMS = (int)(stopAfterSeconds * 1000);
 			await Task.Delay(stopDelayMS);
 			_animatedSprite2D.Stop();
+			_animatedSprite2D.Play("Idle");
 		}
 	}
 	
@@ -68,16 +90,23 @@ public partial class Mascot : Node2D {
 	// -Needs to resize the text box to correct size before making the characters gradually visible
 	// -Tween textbox size or alpha before text starts
 	public async Task PlayText(string text, float textTimeSeconds, float hideTimeSeconds = 10f) {
-		_dialogBox.Visible = true;
-		_dialogText.VisibleCharacters = 0;
-		_dialogText.Text = text;
-		int delayTimeMS = (int)(textTimeSeconds * 1000) / text.Length;
-		int hideTimeMS = (int)(hideTimeSeconds * 1000) / text.Length;
-		for (int i = 1; i <= text.Length; i++) {
-			_dialogText.VisibleCharacters = i;
-			await Task.Delay(delayTimeMS);
+		if (!playingText)
+		{
+			playingText = true;
+			_dialogBox.Visible = true;
+			_dialogText.VisibleCharacters = 0;
+			_dialogText.Text = text;
+			int delayTimeMS = (int)(textTimeSeconds * 1000) / text.Length;
+			int hideTimeMS = (int)(hideTimeSeconds * 1000) / text.Length;
+			PlayAnimation("Chatter", 0f, textTimeSeconds);
+			for (int i = 1; i <= text.Length; i++) {
+				_dialogText.VisibleCharacters = i;
+				await Task.Delay(delayTimeMS);
+			}
+			await Task.Delay(hideTimeMS);
+			_dialogText.VisibleCharacters = 0;
+			_dialogBox.Visible = false;
+			playingText = false;
 		}
-		await Task.Delay(hideTimeMS);
-		_dialogBox.Visible = false;
 	}
 }
