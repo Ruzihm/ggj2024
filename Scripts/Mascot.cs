@@ -28,7 +28,7 @@ public partial class Mascot : Node2D {
 			}
 			if (keyEvent.Keycode == Key.W) {
 				GD.Print("W was pressed");
-				Vector2 mousePos = GetGlobalMousePosition();
+				Vector2 mousePos = new Vector2(500f, 500f);//GetGlobalMousePosition();
 				SetTweenTarget(mousePos);
 			}
 			if (keyEvent.Keycode == Key.E) {
