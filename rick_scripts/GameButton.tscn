@@ -5,8 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6q00s"]
 size = Vector2(123.999, 133)
 
-[node name="Area2D" type="Area2D" node_paths=PackedStringArray("label")]
+[node name="Area2D" type="Area2D" node_paths=PackedStringArray("sprite", "label")]
 script = ExtResource("1_x1vfr")
+sprite = NodePath("Sprite2D")
 label = NodePath("Label")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -29,6 +30,7 @@ grow_vertical = 2
 text = "test"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -33)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
