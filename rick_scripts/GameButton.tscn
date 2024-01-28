@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpjcu0pg1uolp"]
+[gd_scene load_steps=3 format=3 uid="uid://bpjcu0pg1uolp"]
 
 [ext_resource type="Script" path="res://rick_scripts/GameButton.cs" id="1_x1vfr"]
-[ext_resource type="FontFile" uid="uid://c7kbtmrc327h4" path="res://Art/Fonts/BestTen-DOT.otf" id="2_b0ljw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6q00s"]
 size = Vector2(123.999, 133)
-
-[sub_resource type="Theme" id="Theme_qf2ir"]
-default_font = ExtResource("2_b0ljw")
 
 [node name="Area2D" type="Area2D" node_paths=PackedStringArray("sprite", "label")]
 script = ExtResource("1_x1vfr")
@@ -31,13 +27,9 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_qf2ir")
 text = "test"
-horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -40)
-scale = Vector2(2, 2)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

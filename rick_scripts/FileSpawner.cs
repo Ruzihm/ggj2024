@@ -23,7 +23,7 @@ public partial class FileSpawner : Timer
 	public PackedScene fileScene;
 
 	[Export]
-	public Rect2 spawnRect { get; set; }
+	public Rect2 spawnRect;
 
 	public void OnTimeout()
 	{
@@ -51,10 +51,12 @@ public partial class FileSpawner : Timer
 		GameButton newFile = (GameButton)fileScene.Instantiate();
 		newFile.cursor = Cursor;
 
-		var X = GD.RandRange(spawnRect.Position.X, spawnRect.Position.X + spawnRect.Size.X);
-		var Y = GD.RandRange(spawnRect.Position.Y, spawnRect.Position.Y + spawnRect.Size.Y);
+		var spawnStart = spawnRect.Position;
+		var spawnEnd = spawnRect.End;
 
-		newFile.GlobalPosition = new Vector2((float)X, (float)Y);
+		var X = GD.RandRange(spawnStart.X, spawnEnd.X);
+		var Y = GD.RandRange(spawnStart.Y, spawnEnd.Y);
+
 
 		string randName = nameArray[(int)(GD.Randi() % nameArray.Count)];
 		newFile.SetName(randName);
@@ -64,5 +66,6 @@ public partial class FileSpawner : Timer
 		newFile.SetTexture(FileIcons[(int)(GD.Randi() % FileIcons.Count)]);
 
 		GetParent().AddChild(newFile);
+		newFile.GlobalPosition = new Vector2((float)X, (float)Y);
 	}
 }

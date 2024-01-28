@@ -39,7 +39,7 @@ public partial class cursor_controller : RigidBody2D
 
 		if (gravityEnabled && draggedButton != null) 
 		{
-			MoveAndCollide(new Vector2(0, 50));
+			MoveAndCollide(new Vector2(0, 2));
 		}
 	}
 
