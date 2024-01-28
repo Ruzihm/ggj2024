@@ -1,12 +1,84 @@
-[gd_scene load_steps=6 format=3 uid="uid://mymeqdjas71c"]
+[gd_scene load_steps=24 format=3 uid="uid://mymeqdjas71c"]
 
 [ext_resource type="Script" path="res://rick_scripts/MenuController.cs" id="1_55v81"]
 [ext_resource type="PackedScene" uid="uid://cu4ilqyv5kok4" path="res://rick_scripts/cursor.tscn" id="2_6vg6k"]
 [ext_resource type="PackedScene" uid="uid://cuy28bh33yhfl" path="res://game_scene.tscn" id="2_xm1or"]
 [ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="3_g4dsm"]
+[ext_resource type="Texture2D" uid="uid://dvx8e7bx6nchh" path="res://Art/UI/Icons/logo.png" id="5_qmocy"]
+[ext_resource type="Texture2D" uid="uid://b0r74g51clhvx" path="res://Art/UI/screenWithBottomBar.png" id="6_1cf1l"]
+[ext_resource type="FontFile" uid="uid://c7kbtmrc327h4" path="res://Art/Fonts/BestTen-DOT.otf" id="7_vn42e"]
+[ext_resource type="Texture2D" uid="uid://ks1rqucldnf" path="res://Art/Stapey/Ascend/stapeyAscend1.png" id="8_qe45s"]
+[ext_resource type="Texture2D" uid="uid://b4gd7i21gbtcb" path="res://Art/Stapey/Ascend/stapeyAscend2.png" id="9_4deq4"]
+[ext_resource type="Texture2D" uid="uid://bidw50tdmel83" path="res://Art/Stapey/Ascend/stapeyAscend3.png" id="10_w7rdm"]
+[ext_resource type="Texture2D" uid="uid://mngy8oji4y4c" path="res://Art/Stapey/Ascend/stapeyAscend4.png" id="11_d18j2"]
+[ext_resource type="Texture2D" uid="uid://cya7wxarr7716" path="res://Art/Stapey/Ascend/stapeyAscend5.png" id="12_qe5hw"]
+[ext_resource type="Texture2D" uid="uid://bfmlh2svcwdid" path="res://Art/Stapey/Ascend/stapeyAscend6.png" id="13_a6pkv"]
+[ext_resource type="Texture2D" uid="uid://bjksjsw11kjix" path="res://Art/Stapey/Ascend/stapeyAscend7.png" id="14_36iyb"]
+[ext_resource type="Texture2D" uid="uid://bkb814eqp4ut3" path="res://Art/Stapey/Ascend/stapeyAscend8.png" id="15_kn5ul"]
+[ext_resource type="Texture2D" uid="uid://dj22oa2mnq4so" path="res://Art/Stapey/Ascend/stapeyAscend9.png" id="16_wj337"]
+[ext_resource type="Texture2D" uid="uid://qjpsveh5hiu0" path="res://Art/Stapey/Ascend/stapeyAscend10.png" id="17_pxu4o"]
+[ext_resource type="Texture2D" uid="uid://b6jjsqbpqxc3k" path="res://Art/Stapey/Ascend/stapeyAscend11.png" id="18_4gmqn"]
+[ext_resource type="Texture2D" uid="uid://bq7ugo27ujchg" path="res://Art/Stapey/Ascend/stapeyAscend12.png" id="19_x27er"]
+[ext_resource type="Texture2D" uid="uid://dcjtddfqq6boa" path="res://Art/Stapey/stapeyBASE.png" id="20_vbmev"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_soeg7"]
 font_size = 86
+
+[sub_resource type="Theme" id="Theme_tru61"]
+default_font = ExtResource("7_vn42e")
+Label/font_sizes/font_size = 64
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_twvvs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qe45s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4deq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_w7rdm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_d18j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_qe5hw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a6pkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_36iyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_kn5ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wj337")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pxu4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4gmqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_x27er")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_vbmev")
+}],
+"loop": false,
+"name": &"default",
+"speed": 14.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_55v81")
@@ -16,7 +88,7 @@ gameScene = ExtResource("2_xm1or")
 position = Vector2(171, 108)
 
 [node name="Start" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("3_g4dsm")]
-position = Vector2(589, 209)
+position = Vector2(590, 307)
 cursor = NodePath("../Cursor")
 buttonType = 2
 
@@ -31,11 +103,10 @@ offset_right = 101.0
 offset_bottom = 59.0
 text = "Start"
 label_settings = SubResource("LabelSettings_soeg7")
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Exit" parent="." node_paths=PackedStringArray("cursor", "label") instance=ExtResource("3_g4dsm")]
-position = Vector2(592, 474)
+position = Vector2(590, 517)
 cursor = NodePath("../Cursor")
 buttonType = 2
 label = NodePath("../Start/Label")
@@ -51,8 +122,32 @@ offset_right = 101.0
 offset_bottom = 59.0
 text = "Quit"
 label_settings = SubResource("LabelSettings_soeg7")
-horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(308, 132)
+scale = Vector2(2, 2.432)
+texture = ExtResource("5_qmocy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("6_1cf1l")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 353.0
+offset_top = 99.0
+offset_right = 827.0
+offset_bottom = 164.0
+theme = SubResource("Theme_tru61")
+text = "Minisoft ExHell"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(386, 306)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_twvvs")
+autoplay = "default"
 
 [connection signal="OnClick" from="Start" to="." method="OnStart"]
 [connection signal="OnClick" from="Exit" to="." method="OnQuit"]

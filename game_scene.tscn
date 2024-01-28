@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cuy28bh33yhfl"]
+[gd_scene load_steps=16 format=3 uid="uid://cuy28bh33yhfl"]
 
 [ext_resource type="Script" path="res://rick_scripts/FileSpawner.cs" id="1_af5ns"]
 [ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_eh3vf"]
@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Gags/GagController.cs" id="5_hc13m"]
 [ext_resource type="Texture2D" uid="uid://cxil0x8n7hbjv" path="res://Art/UI/Icons/folder.png" id="5_u5l4a"]
 [ext_resource type="PackedScene" uid="uid://b2excr0f7ovs4" path="res://mascot.tscn" id="5_usa8x"]
-[ext_resource type="PackedScene" uid="uid://tu04lvh6ja7y" path="res://Scripts/Gags/CaptchaGag.tscn" id="6_52kh7"]
+[ext_resource type="PackedScene" uid="uid://jjr7hdf6wv2r" path="res://Scripts/Gags/CaptchaGag.tscn" id="6_52kh7"]
 [ext_resource type="PackedScene" uid="uid://cylqcoyk0hovh" path="res://Scripts/Gags/ReverseControlsGag.tscn" id="7_22adk"]
 [ext_resource type="PackedScene" uid="uid://bsxjapxqktirf" path="res://Scripts/Gags/CursorGravityGag.tscn" id="8_goo3c"]
 
@@ -19,9 +19,6 @@ b = Vector2(1150, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8y0x1"]
 b = Vector2(0, 650)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_le5fq"]
-size = Vector2(44.0004, 107)
 
 [node name="Root" type="Node2D"]
 
@@ -32,7 +29,7 @@ position = Vector2(545, 282)
 wait_time = 0.07
 script = ExtResource("1_af5ns")
 Cursor = NodePath("../../Cursor")
-TrashFilenames = Array[String](["trash.txt", "Family Photos.png", "criminal_conspiracy_notes.doc", "passwords.do_not_save"])
+TrashFilenames = Array[String](["trash.txt", "Family Photos.png", "criminal_conspiracy_notes.doc", "passwords.do_not_save", "DELETE_ME.dat", "snappyJjokes.wav", ""])
 ArchiveFilenames = Array[String](["Q4_reports.xls", "Presentation_Final_FINAL.ppt", "TaxReturns2019_4.doc", "Location_Survey_1992.idgaf"])
 SpamFilenames = Array[String](["BuyMyDog.cool", "LOCAL_CATS_IN_YOUR_AREA.pdf", "IncreaseYourEnergy_NATURALLY.jpg"])
 FileIcons = Array[Texture]([ExtResource("2_q3eq2"), ExtResource("3_mk5qf")])
@@ -127,38 +124,16 @@ taunt0 = "Hi, I'm Stapey! I'm here to help you with this menial task. Just drag 
 
 ...When you're done, I'll be sent back to HELL."
 
-[node name="GUI" parent="." node_paths=PackedStringArray("_fileSpawner", "_mascot") instance=ExtResource("4_lvrr6")]
+[node name="GUI" parent="." node_paths=PackedStringArray("_fileSpawner") instance=ExtResource("4_lvrr6")]
 _fileSpawner = NodePath("../Controllers/FileSpawner")
-_mascot = NodePath("../Mascot")
 IncorrectPenalty = -5.0
 TimeLimit = 300.0
-
-[node name="WinButton" parent="." node_paths=PackedStringArray("cursor", "sprite", "label") instance=ExtResource("2_eh3vf")]
-position = Vector2(60, 619)
-cursor = NodePath("../Cursor")
-sprite = NodePath("../SpamDest/Sprite2D")
-destType = 1
-buttonType = 2
-label = NodePath("../ArchiveDest/Label")
-
-[node name="CollisionShape2D" parent="WinButton" index="0"]
-position = Vector2(-0.5, -1)
-shape = SubResource("RectangleShape2D_le5fq")
-
-[node name="Label" parent="WinButton" index="1"]
-z_index = -1
-text = ""
-
-[node name="Sprite2D" parent="WinButton" index="2"]
-z_index = -1
 
 [connection signal="timeout" from="Controllers/FileSpawner" to="Controllers/FileSpawner" method="OnTimeout"]
 [connection signal="timeout" from="Controllers/GagController" to="Controllers/GagController" method="OnTimeout"]
 [connection signal="FileDeposited" from="Cursor" to="GUI" method="_on_cursor_file_deposited"]
-[connection signal="OnClick" from="WinButton" to="GUI" method="WinGame"]
 
 [editable path="Cursor"]
 [editable path="TrashDest"]
 [editable path="ArchiveDest"]
 [editable path="SpamDest"]
-[editable path="WinButton"]
