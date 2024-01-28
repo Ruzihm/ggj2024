@@ -67,7 +67,7 @@ public partial class Mascot : Node2D {
 	// Play Text
 	// -Needs to resize the text box to correct size before making the characters gradually visible
 	// -Tween textbox size or alpha before text starts
-	public async Task PlayText(string text, float textTimeSeconds, float hideTimeSeconds) {
+	public async Task PlayText(string text, float textTimeSeconds, float hideTimeSeconds = 10f) {
 		_dialogBox.Visible = true;
 		_dialogText.VisibleCharacters = 0;
 		_dialogText.Text = text;
