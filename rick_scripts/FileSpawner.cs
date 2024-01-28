@@ -17,6 +17,9 @@ public partial class FileSpawner : Timer
 	public Godot.Collections.Array<string> MarketingFilenames;
 
 	[Export]
+	public Godot.Collections.Array<Texture2D> FileIcons;
+
+	[Export]
 	public PackedScene fileScene;
 
 	[Export]
@@ -57,6 +60,8 @@ public partial class FileSpawner : Timer
 		newFile.SetName(randName);
 
 		newFile.destType = destType;
+		
+		newFile.SetTexture(FileIcons[(int)(GD.Randi() % FileIcons.Count)]);
 
 		GetParent().AddChild(newFile);
 	}

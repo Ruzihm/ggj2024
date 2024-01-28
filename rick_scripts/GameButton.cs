@@ -5,6 +5,9 @@ public partial class GameButton : Area2D
 {
 	[Export]
 	public cursor_controller cursor;
+	
+	[Export]
+	private Sprite2D sprite;
 
 	public enum ButtonType
 	{
@@ -62,5 +65,10 @@ public partial class GameButton : Area2D
 	public void SetName(string name)
 	{
 		label.Text = name;
+	}
+	
+	public void SetTexture(Texture2D newTexture)
+	{
+		sprite.Texture = newTexture;
 	}
 }
