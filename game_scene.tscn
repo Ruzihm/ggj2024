@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cuy28bh33yhfl"]
+[gd_scene load_steps=19 format=3 uid="uid://cuy28bh33yhfl"]
 
 [ext_resource type="Script" path="res://rick_scripts/FileSpawner.cs" id="1_af5ns"]
 [ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_eh3vf"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://jjr7hdf6wv2r" path="res://Scripts/Gags/CaptchaGag.tscn" id="6_52kh7"]
 [ext_resource type="PackedScene" uid="uid://cylqcoyk0hovh" path="res://Scripts/Gags/ReverseControlsGag.tscn" id="7_22adk"]
 [ext_resource type="PackedScene" uid="uid://bsxjapxqktirf" path="res://Scripts/Gags/CursorGravityGag.tscn" id="8_goo3c"]
+[ext_resource type="AudioStream" uid="uid://cb3jcv8bkmxxd" path="res://Art/Music/Clave.wav" id="9_ms14x"]
 [ext_resource type="Texture2D" uid="uid://dloplivwigm7k" path="res://Art/UI/Icons/folderSPAM.png" id="12_wf3us"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hmngg"]
@@ -47,6 +48,11 @@ script = ExtResource("5_hc13m")
 gagScenes = Array[PackedScene]([ExtResource("6_52kh7"), ExtResource("7_22adk"), ExtResource("8_goo3c")])
 cursor = NodePath("../../Cursor")
 mascot = NodePath("../../Mascot")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Controllers"]
+stream = ExtResource("9_ms14x")
+volume_db = -10.4
+autoplay = true
 
 [node name="Cursor" parent="." instance=ExtResource("3_1xq7c")]
 position = Vector2(426, 65)
