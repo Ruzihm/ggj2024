@@ -40,9 +40,9 @@ public partial class GameManager : Control {
 		_progressBar = GetNode<TextureProgressBar>("TextureProgressBar");
 		_timeLimit = GetNode<Timer>("Timer");
 		_timerLabel = GetNode<Label>("TimerLabel");
-		_progressButton = GetNode<TextureButton>("Background/TextureButton");
-		_progressLabel = GetNode<Label>("Background/TextureButton/ProgressLabel");
-		_progressGameButton = GetNode<GameButton>("Background/TextureButton");
+		_progressButton = GetNode<TextureButton>("Background/Area2D/TextureButton");
+		_progressLabel = GetNode<Label>("Background/Area2D/TextureButton/ProgressLabel");
+		_progressGameButton = GetNode<GameButton>("Background/Area2D");
 		
 		StartGame(StartingNumFiles, FileSpawnInterval, CorrectValue, IncorrectPenalty, TimeLimit);
 	}

@@ -343,7 +343,7 @@ taunt0 = "Hi, I'm Stapey! I'm here to help you with this menial task. Just drag 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4mhoa")
-animation = &"Chatter"
+animation = &"Left"
 autoplay = "Ascend"
 
 [node name="Node2D" type="Node2D" parent="."]
