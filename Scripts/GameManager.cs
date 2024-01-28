@@ -12,6 +12,9 @@ public partial class GameManager : Control {
 	private FileSpawner _fileSpawner;
 	
 	[Export]
+	private GagController _gagController;
+	
+	[Export]
 	private Mascot _mascot;
 	
 	private Label _timerLabel;
@@ -70,12 +73,29 @@ public partial class GameManager : Control {
 			_fileSpawner.OnTimeout();
 			
 		_fileSpawner.Start(FileSpawnInterval);
+		_gagController.Start();
 		
 		if (TimeLimit > 0f)
 			_timeLimit.Start(TimeLimit);
+	}
+	
+	public override void _Input(InputEvent @event)
+	{
+		if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+		{
+			if (keyEvent.Keycode == Key.Q)
+			{
+				GD.Print("Q was pressed");
+				//DEBUG
+				OpenExit();
+			}
 			
-		//DEBUG
-		OpenExit();
+			if (keyEvent.Keycode == Key.W)
+			{
+				GD.Print("W was pressed");
+				EndGame(false);
+			}
+		}
 	}
 	
 	public void WinGame()
@@ -89,11 +109,11 @@ public partial class GameManager : Control {
 	public void EndGame(bool win)
 	{
 		GD.Print("GAME OVER");
+		_gagController.Stop();
 		_timeLimit.Stop();
 		_fileSpawner.Stop();
 		InProgress = false;
 		
-		//TODO: new screen / effect based on win/loss
 		if (win)
 		{
 			_mascot.PlayText("NO, THE FIRE!!!!\nIT BURNS...", 5f, 10f);
@@ -101,7 +121,8 @@ public partial class GameManager : Control {
 		}
 		else
 		{
-			
+			_mascot.PlayText("Oh no... Looks like you'll have to restart your shift. Guess you're stuck with me a little longer!", 5f, 10f);
+			_mascot.PlayAnimation("Chomp", 6f, 0f);
 		}
 	}
 

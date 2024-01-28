@@ -71,8 +71,10 @@ public partial class Mascot : Node2D {
 	// -Needs to resize the text box to correct size before making the characters gradually visible
 	// -Tween textbox size or alpha before text starts
 	public async Task PlayText(string text, float textTimeSeconds, float hideTimeSeconds = 10f) {
+		GD.Print("attempt text");
 		if (!playingText)
 		{
+			GD.Print("play text");
 			playingText = true;
 			_dialogBox.Visible = true;
 			_dialogText.VisibleCharacters = 0;
@@ -97,7 +99,7 @@ public partial class Mascot : Node2D {
 		if(_animatedSprite2D.Animation == "Ascend")
 		{
 			_animatedSprite2D.Play("Idle");
-			PlayText(_taunts[0], 5f, 10f);
+			PlayText(_taunts[0], 5f, 2.5f);
 		}
 		if(_animatedSprite2D.Animation == "Left")
 		{

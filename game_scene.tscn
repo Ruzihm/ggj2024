@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cuy28bh33yhfl"]
+[gd_scene load_steps=17 format=3 uid="uid://cuy28bh33yhfl"]
 
 [ext_resource type="Script" path="res://rick_scripts/FileSpawner.cs" id="1_af5ns"]
 [ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_eh3vf"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://jjr7hdf6wv2r" path="res://Scripts/Gags/CaptchaGag.tscn" id="6_52kh7"]
 [ext_resource type="PackedScene" uid="uid://cylqcoyk0hovh" path="res://Scripts/Gags/ReverseControlsGag.tscn" id="7_22adk"]
 [ext_resource type="PackedScene" uid="uid://bsxjapxqktirf" path="res://Scripts/Gags/CursorGravityGag.tscn" id="8_goo3c"]
+[ext_resource type="Texture2D" uid="uid://dloplivwigm7k" path="res://Art/UI/Icons/folderSPAM.png" id="12_wf3us"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hmngg"]
 b = Vector2(1150, 0)
@@ -39,7 +40,6 @@ spawnRect = Rect2(800, 100, 250, 450)
 [node name="GagController" type="Timer" parent="Controllers" node_paths=PackedStringArray("cursor", "mascot")]
 wait_time = 30.0
 one_shot = true
-autostart = true
 script = ExtResource("5_hc13m")
 gagScenes = Array[PackedScene]([ExtResource("6_52kh7"), ExtResource("7_22adk"), ExtResource("8_goo3c")])
 cursor = NodePath("../../Cursor")
@@ -116,16 +116,18 @@ text = "Spam"
 
 [node name="Sprite2D" parent="SpamDest" index="2"]
 z_index = -1
-texture = ExtResource("5_u5l4a")
+texture = ExtResource("12_wf3us")
 
 [node name="Mascot" parent="." instance=ExtResource("5_usa8x")]
 position = Vector2(1088, 532)
-taunt0 = "Hi, I'm Stapey! I'm here to help you with this menial task. Just drag the Files from the right of the screen to the Folders on the left.
+taunt0 = "Hi, I'm Stapey! I'm here to help you with this menial task. Just drag the Files from the right of the screen to the correct Folders on the left.
 
 ...When you're done, I'll be sent back to HELL."
 
-[node name="GUI" parent="." node_paths=PackedStringArray("_fileSpawner") instance=ExtResource("4_lvrr6")]
+[node name="GUI" parent="." node_paths=PackedStringArray("_fileSpawner", "_gagController", "_mascot") instance=ExtResource("4_lvrr6")]
 _fileSpawner = NodePath("../Controllers/FileSpawner")
+_gagController = NodePath("../Controllers/GagController")
+_mascot = NodePath("../Mascot")
 IncorrectPenalty = -5.0
 TimeLimit = 300.0
 
