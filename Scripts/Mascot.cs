@@ -22,17 +22,18 @@ public partial class Mascot : Node2D {
 	public override void _Input(InputEvent @event) {
 		//Just Debug to test stuff
 		if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
-			if (keyEvent.Keycode == Key.W) {
-				GD.Print("W was pressed");
+			if (keyEvent.Keycode == Key.Q) {
+				GD.Print("Q was pressed");
 				PlayAnimation("idle", 0f, 5f);
 			}
-			if (keyEvent.Keycode == Key.S) {
-				GD.Print("S was pressed");
+			if (keyEvent.Keycode == Key.W) {
+				GD.Print("W was pressed");
 				Vector2 mousePos = GetGlobalMousePosition();
 				SetTweenTarget(mousePos);
 			}
 			if (keyEvent.Keycode == Key.E) {
-				PlayText("TEST text goes here stupid", 5f);
+				GD.Print("E was pressed");
+				PlayText("TEST text goes here stupid", 5f, 10f);
 			}
 		}
 	}
@@ -66,13 +67,17 @@ public partial class Mascot : Node2D {
 	// Play Text
 	// -Needs to resize the text box to correct size before making the characters gradually visible
 	// -Tween textbox size or alpha before text starts
-	public async Task PlayText(string text, float textTimeSeconds) {
+	public async Task PlayText(string text, float textTimeSeconds, float hideTimeSeconds) {
+		_dialogBox.Visible = true;
 		_dialogText.VisibleCharacters = 0;
 		_dialogText.Text = text;
 		int delayTimeMS = (int)(textTimeSeconds * 1000) / text.Length;
+		int hideTimeMS = (int)(hideTimeSeconds * 1000) / text.Length;
 		for (int i = 1; i <= text.Length; i++) {
 			_dialogText.VisibleCharacters = i;
 			await Task.Delay(delayTimeMS);
 		}
+		await Task.Delay(hideTimeMS);
+		_dialogBox.Visible = false;
 	}
 }

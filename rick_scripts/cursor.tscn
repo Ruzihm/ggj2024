@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cu4ilqyv5kok4"]
+[gd_scene load_steps=3 format=3 uid="uid://cu4ilqyv5kok4"]
 
 [ext_resource type="Script" path="res://rick_scripts/cursor_controller.cs" id="1_x3xut"]
+[ext_resource type="Texture2D" uid="uid://7ymawcurmgox" path="res://Art/Cursor/clicker.png" id="2_bt3gx"]
 
 [node name="Cursor" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -9,8 +10,13 @@ angular_damp_mode = 1
 script = ExtResource("1_x3xut")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(1, 0, 1, 20, 1, 20, 11, 26, 13, 26, 15, 17)
+polygon = PackedVector2Array(0, 0, 7, 22, 11, 18, 18, 24, 22, 20, 16, 13, 20, 9)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 position = Vector2(-14, -6)
 polygon = PackedVector2Array(15, 6, 15, 6, 15, 26, 20, 23, 25, 32, 27, 32, 22, 23, 29, 23)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11, 12)
+texture = ExtResource("2_bt3gx")

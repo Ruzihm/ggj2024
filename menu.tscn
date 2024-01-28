@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://rick_scripts/MenuController.cs" id="1_55v81"]
 [ext_resource type="PackedScene" uid="uid://cu4ilqyv5kok4" path="res://rick_scripts/cursor.tscn" id="2_6vg6k"]
 [ext_resource type="PackedScene" uid="uid://cuy28bh33yhfl" path="res://game_scene.tscn" id="2_xm1or"]
-[ext_resource type="PackedScene" path="res://rick_scripts/GameButton.tscn" id="3_g4dsm"]
+[ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="3_g4dsm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_soeg7"]
 font_size = 86

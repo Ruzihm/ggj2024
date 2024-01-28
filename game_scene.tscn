@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cuy28bh33yhfl"]
 
 [ext_resource type="Script" path="res://rick_scripts/FileSpawner.cs" id="1_af5ns"]
-[ext_resource type="PackedScene" path="res://rick_scripts/GameButton.tscn" id="2_eh3vf"]
+[ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_eh3vf"]
 [ext_resource type="PackedScene" uid="uid://cu4ilqyv5kok4" path="res://rick_scripts/cursor.tscn" id="3_1xq7c"]
 [ext_resource type="PackedScene" uid="uid://bajxyvngdtd7s" path="res://gui.tscn" id="4_lvrr6"]
 [ext_resource type="PackedScene" uid="uid://b2excr0f7ovs4" path="res://mascot.tscn" id="5_usa8x"]
