@@ -5,6 +5,7 @@ public partial class GameManager : Control {
 	private TextureProgressBar _progressBar;
 	private Timer _timeLimit;
 	private TextureButton _progressButton;
+	private GameButton _progressGameButton;
 	private Label _progressLabel;
 	
 	[Export]
@@ -41,6 +42,7 @@ public partial class GameManager : Control {
 		_timerLabel = GetNode<Label>("TimerLabel");
 		_progressButton = GetNode<TextureButton>("Background/TextureButton");
 		_progressLabel = GetNode<Label>("Background/TextureButton/ProgressLabel");
+		_progressGameButton = GetNode<GameButton>("Background/TextureButton");
 		
 		StartGame(StartingNumFiles, FileSpawnInterval, CorrectValue, IncorrectPenalty, TimeLimit);
 	}
@@ -61,7 +63,7 @@ public partial class GameManager : Control {
 			_timerLabel.Text = string.Format("{0:00.00}", ElapsedTime);
 		
 		_progressBar.Value = 0f;
-		_progressButton.Disabled = false;//true;
+		_progressButton.Disabled = true;
 		_progressLabel.Text = string.Format("{0}%", _progressBar.Value);
 		
 		for (int i = 0; i < startingNumFiles; i++)
@@ -71,6 +73,9 @@ public partial class GameManager : Control {
 		
 		if (TimeLimit > 0f)
 			_timeLimit.Start(TimeLimit);
+			
+		//DEBUG
+		OpenExit();
 	}
 	
 	public void WinGame()
@@ -109,10 +114,16 @@ public partial class GameManager : Control {
 				_timerLabel.Text = string.Format("{0:00.00}", ElapsedTime);
 			
 			if (_progressBar.Value >= _progressBar.MaxValue) {
-				_progressButton.Disabled = false;
-				_progressLabel.Text = "EXIT";
+				OpenExit();
 			}
 		}
+	}
+	
+	private void OpenExit()
+	{
+		GD.Print("OpenExit");
+		_progressButton.Disabled = false;
+		_progressLabel.Text = "EXIT";
 	}
 	
 	private void _on_timer_timeout()

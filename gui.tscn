@@ -64,6 +64,8 @@ z_index = -100
 position = Vector2(288, 162)
 texture = ExtResource("4_pwqoe")
 
+[node name="Area2D" type="Area2D" parent="Background"]
+
 [node name="TextureButton" type="TextureButton" parent="Background"]
 offset_left = -285.0
 offset_top = 136.0
