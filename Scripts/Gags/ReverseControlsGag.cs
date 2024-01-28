@@ -7,8 +7,9 @@ public partial class ReverseControlsGag : BaseGag
 	public Timer timer ;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
-	{
-		cursor.ReverseControls();
+    {
+        _ = mascot.PlayText("Let's make sure you aren't working under the influence. Engaging sobriety test mode.", 5);
+        cursor.ReverseControls();
 	}
 
 	private void _on_timer_timeout()
