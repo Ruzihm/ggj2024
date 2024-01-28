@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cuy28bh33yhfl"]
+[gd_scene load_steps=18 format=3 uid="uid://cuy28bh33yhfl"]
 
 [ext_resource type="Script" path="res://rick_scripts/FileSpawner.cs" id="1_af5ns"]
 [ext_resource type="PackedScene" uid="uid://bpjcu0pg1uolp" path="res://rick_scripts/GameButton.tscn" id="2_eh3vf"]
@@ -20,6 +20,9 @@ b = Vector2(1150, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8y0x1"]
 b = Vector2(0, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmnir"]
+size = Vector2(45.9996, 112)
 
 [node name="Root" type="Node2D"]
 
@@ -131,11 +134,32 @@ _mascot = NodePath("../Mascot")
 IncorrectPenalty = -5.0
 TimeLimit = 300.0
 
+[node name="Exitbutton" parent="." node_paths=PackedStringArray("cursor", "sprite", "label") instance=ExtResource("2_eh3vf")]
+position = Vector2(62, 619)
+cursor = NodePath("../Cursor")
+sprite = NodePath("../SpamDest/Sprite2D")
+destType = 2
+buttonType = 2
+label = NodePath("../ArchiveDest/Label")
+
+[node name="CollisionShape2D" parent="Exitbutton" index="0"]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_hmnir")
+
+[node name="Label" parent="Exitbutton" index="1"]
+z_index = -1
+text = ""
+
+[node name="Sprite2D" parent="Exitbutton" index="2"]
+z_index = -1
+
 [connection signal="timeout" from="Controllers/FileSpawner" to="Controllers/FileSpawner" method="OnTimeout"]
 [connection signal="timeout" from="Controllers/GagController" to="Controllers/GagController" method="OnTimeout"]
 [connection signal="FileDeposited" from="Cursor" to="GUI" method="_on_cursor_file_deposited"]
+[connection signal="OnClick" from="Exitbutton" to="GUI" method="WinGame"]
 
 [editable path="Cursor"]
 [editable path="TrashDest"]
 [editable path="ArchiveDest"]
 [editable path="SpamDest"]
+[editable path="Exitbutton"]
