@@ -15,8 +15,16 @@ public partial class CaptchaGag : BaseGag
 	{
 		base._Ready();
 		cursor.BeginDialogMode();
-		_ = mascot.PlayText("Prove you are human. How many grains of sand are pictured in the shown image?", 3);
 		inputText.GrabFocus();
+
+		inputPossible = false;
+		_ = WaitForClippy();
+	}
+
+	public async Task WaitForClippy()
+	{
+		await mascot.PlayText("Prove you are human. How many grains of sand are pictured in the shown image?", 2, 2);
+		inputPossible = true;
 	}
 
 	public async Task Submit()
@@ -33,14 +41,14 @@ public partial class CaptchaGag : BaseGag
 
 		if (attempted)
 		{
-			_ = mascot.PlayText("Eh, close enough.", 1);
+			_ = mascot.PlayText("Eh, close enough.", 1, 2);
 			cursor.ResetControls();
 			EmitSignal(BaseGag.SignalName.OnComplete);
 		}
 		else
 		{
 			inputText.Text = "";
-			await mascot.PlayText("Incorrect. Please try again. Remaining attempts: 98432786318", 5);
+			await mascot.PlayText("Incorrect. Please try again. Remaining attempts: 98432786318", 2,2);
 			inputPossible = true;
 			attempted = true;
 		}
