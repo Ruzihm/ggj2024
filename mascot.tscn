@@ -284,11 +284,14 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_p6h65")
 }, {
-"duration": 1.0,
+"duration": 8.0,
 "texture": ExtResource("28_12trh")
 }, {
 "duration": 1.0,
 "texture": ExtResource("29_bqhkx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7q6pb")
 }],
 "loop": false,
 "name": &"Left",
@@ -301,11 +304,14 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("31_iam3u")
 }, {
-"duration": 1.0,
+"duration": 8.0,
 "texture": ExtResource("32_ad777")
 }, {
 "duration": 1.0,
 "texture": ExtResource("33_pgy8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7q6pb")
 }],
 "loop": false,
 "name": &"Right",

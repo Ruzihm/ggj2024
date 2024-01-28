@@ -97,7 +97,7 @@ public partial class Mascot : Node2D {
 		if(_animatedSprite2D.Animation == "Ascend")
 		{
 			_animatedSprite2D.Play("Idle");
-			PlayText(_taunts[0], 5f, 30f);
+			PlayText(_taunts[0], 5f, 10f);
 		}
 		if(_animatedSprite2D.Animation == "Left")
 		{
