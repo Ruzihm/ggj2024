@@ -214,6 +214,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("40_1yi5b")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"Descend",
@@ -349,7 +352,7 @@ taunt0 = "Hi, I'm Stapey! I'm here to help you with this menial task. Just drag 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4mhoa")
-animation = &"Left"
+animation = &"Chomp"
 autoplay = "Ascend"
 
 [node name="Node2D" type="Node2D" parent="."]

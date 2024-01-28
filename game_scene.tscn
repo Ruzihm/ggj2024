@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://jjr7hdf6wv2r" path="res://Scripts/Gags/CaptchaGag.tscn" id="6_52kh7"]
 [ext_resource type="PackedScene" uid="uid://cylqcoyk0hovh" path="res://Scripts/Gags/ReverseControlsGag.tscn" id="7_22adk"]
 [ext_resource type="PackedScene" uid="uid://bsxjapxqktirf" path="res://Scripts/Gags/CursorGravityGag.tscn" id="8_goo3c"]
-[ext_resource type="AudioStream" uid="uid://cb3jcv8bkmxxd" path="res://Art/Music/Clave.wav" id="9_ms14x"]
+[ext_resource type="AudioStream" uid="uid://cqio3lr6fnnk" path="res://Art/Music/Clave.wav" id="9_ms14x"]
 [ext_resource type="Texture2D" uid="uid://dloplivwigm7k" path="res://Art/UI/Icons/folderSPAM.png" id="12_wf3us"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hmngg"]
@@ -42,7 +42,7 @@ fileScene = ExtResource("2_eh3vf")
 spawnRect = Rect2(800, 100, 250, 450)
 
 [node name="GagController" type="Timer" parent="Controllers" node_paths=PackedStringArray("cursor", "mascot")]
-wait_time = 30.0
+wait_time = 20.0
 one_shot = true
 script = ExtResource("5_hc13m")
 gagScenes = Array[PackedScene]([ExtResource("6_52kh7"), ExtResource("7_22adk"), ExtResource("8_goo3c")])

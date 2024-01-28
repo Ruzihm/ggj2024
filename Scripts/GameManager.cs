@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class GameManager : Control {
 	private TextureProgressBar _progressBar;
@@ -35,8 +36,21 @@ public partial class GameManager : Control {
 	// 0 or less for no time limit
 	private float TimeLimit = 0f;
 	
+	[Export]
+	public PackedScene gameScene;
+	
+	[Export]
+	public PackedScene menuScene;
+	
 	private bool InProgress = false;
 	private float ElapsedTime = 0f;
+	
+	public async Task DelayedSceneLoad(float delayTimeSeconds, PackedScene nextScene)
+	{
+		int delayMS = (int)(delayTimeSeconds * 1000);
+		await Task.Delay(delayMS);
+		GetTree().ChangeSceneToPacked(nextScene);
+	}
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -79,7 +93,7 @@ public partial class GameManager : Control {
 			_timeLimit.Start(TimeLimit);
 	}
 	
-	public override void _Input(InputEvent @event)
+	/*public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventKey keyEvent && keyEvent.Pressed)
 		{
@@ -96,7 +110,7 @@ public partial class GameManager : Control {
 				EndGame(false);
 			}
 		}
-	}
+	}*/
 	
 	public void WinGame()
 	{
@@ -108,21 +122,26 @@ public partial class GameManager : Control {
 	
 	public void EndGame(bool win)
 	{
-		GD.Print("GAME OVER");
-		_gagController.Stop();
-		_timeLimit.Stop();
-		_fileSpawner.Stop();
-		InProgress = false;
-		
-		if (win)
+		if (InProgress)
 		{
-			_mascot.PlayText("NO, THE FIRE!!!!\nIT BURNS...", 5f, 10f);
-			_mascot.PlayAnimation("Descend", 6f, 0f);
-		}
-		else
-		{
-			_mascot.PlayText("Oh no... Looks like you'll have to restart your shift. Guess you're stuck with me a little longer!", 5f, 10f);
-			_mascot.PlayAnimation("Chomp", 6f, 0f);
+			GD.Print("GAME OVER");
+			_gagController.Stop();
+			_timeLimit.Stop();
+			_fileSpawner.Stop();
+			InProgress = false;
+			
+			if (win)
+			{
+				_mascot.PlayText("No! Please!!!\nWhy must it burn EVERY time?\nAAAaaaa......", 5f, 10f);
+				_mascot.PlayAnimation("Descend", 4.5f, 0f);
+			}
+			else
+			{
+				_mascot.PlayText("Oh no... You took too long, looks like you'll have to restart your shift. Guess you're stuck with me a little longer\n:))))))", 5f, 10f);
+				_mascot.PlayAnimation("Chomp", 5f, 0f);
+			}
+			
+			//DelayedSceneLoad(7f, win ? menuScene : gameScene);
 		}
 	}
 

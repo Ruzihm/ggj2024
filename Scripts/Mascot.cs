@@ -105,5 +105,9 @@ public partial class Mascot : Node2D {
 		{
 			_animatedSprite2D.Play("Idle");
 		}
+		if(_animatedSprite2D.Animation == "Descend")
+		{
+			_animatedSprite2D.Visible = false;
+		}
 	}
 }
