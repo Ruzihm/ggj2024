@@ -39,7 +39,6 @@ public partial class GameManager : Control {
 	[Export]
 	public PackedScene gameScene;
 	
-	[Export]
 	public PackedScene menuScene;
 	
 	private bool InProgress = false;
@@ -60,6 +59,7 @@ public partial class GameManager : Control {
 		_progressButton = GetNode<TextureButton>("Background/Area2D/TextureButton");
 		_progressLabel = GetNode<Label>("Background/Area2D/TextureButton/ProgressLabel");
 		_progressGameButton = GetNode<GameButton>("Background/Area2D");
+		menuScene = GD.Load<PackedScene>("res://menu.tscn");
 		
 		StartGame(StartingNumFiles, FileSpawnInterval, CorrectValue, IncorrectPenalty, TimeLimit);
 	}
@@ -141,7 +141,7 @@ public partial class GameManager : Control {
 				_mascot.PlayAnimation("Chomp", 5f, 0f);
 			}
 			
-			//DelayedSceneLoad(7f, win ? menuScene : gameScene);
+			DelayedSceneLoad(7f, win ? menuScene : gameScene);
 		}
 	}
 

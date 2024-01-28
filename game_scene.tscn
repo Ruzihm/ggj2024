@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://jjr7hdf6wv2r" path="res://Scripts/Gags/CaptchaGag.tscn" id="6_52kh7"]
 [ext_resource type="PackedScene" uid="uid://cylqcoyk0hovh" path="res://Scripts/Gags/ReverseControlsGag.tscn" id="7_22adk"]
 [ext_resource type="PackedScene" uid="uid://bsxjapxqktirf" path="res://Scripts/Gags/CursorGravityGag.tscn" id="8_goo3c"]
-[ext_resource type="AudioStream" uid="uid://cqio3lr6fnnk" path="res://Art/Music/Clave.wav" id="9_ms14x"]
+[ext_resource type="AudioStream" uid="uid://cb3jcv8bkmxxd" path="res://Art/Music/Clave.wav" id="9_ms14x"]
 [ext_resource type="Texture2D" uid="uid://dloplivwigm7k" path="res://Art/UI/Icons/folderSPAM.png" id="12_wf3us"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hmngg"]
@@ -34,7 +34,7 @@ position = Vector2(545, 282)
 wait_time = 0.07
 script = ExtResource("1_af5ns")
 Cursor = NodePath("../../Cursor")
-TrashFilenames = Array[String](["trash.txt", "Family Photos.png", "criminal_conspiracy_notes.doc", "passwords.do_not_save", "DELETE_ME.dat", "snappyJjokes.wav", ""])
+TrashFilenames = Array[String](["trash.txt", "Family Photos.png", "criminal_conspiracy_notes.doc", "passwords.do_not_save", "DELETE_ME.dat", "snappyJjokes.wav"])
 ArchiveFilenames = Array[String](["Q4_reports.xls", "Presentation_Final_FINAL.ppt", "TaxReturns2019_4.doc", "Location_Survey_1992.idgaf"])
 SpamFilenames = Array[String](["BuyMyDog.cool", "LOCAL_CATS_IN_YOUR_AREA.pdf", "IncreaseYourEnergy_NATURALLY.jpg"])
 FileIcons = Array[Texture]([ExtResource("2_q3eq2"), ExtResource("3_mk5qf")])
@@ -139,6 +139,7 @@ _gagController = NodePath("../Controllers/GagController")
 _mascot = NodePath("../Mascot")
 IncorrectPenalty = -5.0
 TimeLimit = 300.0
+gameScene = null
 
 [node name="Exitbutton" parent="." node_paths=PackedStringArray("cursor", "sprite", "label") instance=ExtResource("2_eh3vf")]
 position = Vector2(62, 619)
