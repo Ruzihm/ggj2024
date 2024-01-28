@@ -84,7 +84,7 @@ public partial class Mascot : Node2D {
 				_dialogText.VisibleCharacters = i;
 				await Task.Delay(delayTimeMS);
 			}
-			PlayAnimation("Idle", 0f, 0f);
+			PlayAnimation("Left", 0f, 0f);
 			await Task.Delay(hideTimeMS);
 			_dialogText.VisibleCharacters = 0;
 			_dialogBox.Visible = false;
@@ -98,6 +98,10 @@ public partial class Mascot : Node2D {
 		{
 			_animatedSprite2D.Play("Idle");
 			PlayText(_taunts[0], 5f, 30f);
+		}
+		if(_animatedSprite2D.Animation == "Left")
+		{
+			_animatedSprite2D.Play("Idle");
 		}
 	}
 }
