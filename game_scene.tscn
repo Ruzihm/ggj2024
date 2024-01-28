@@ -37,7 +37,7 @@ fileScene = ExtResource("2_eh3vf")
 spawnRect = Rect2(800, 100, 250, 450)
 
 [node name="GagController" type="Timer" parent="Controllers" node_paths=PackedStringArray("cursor", "mascot")]
-wait_time = 10.0
+wait_time = 30.0
 one_shot = true
 autostart = true
 script = ExtResource("5_hc13m")
@@ -120,7 +120,9 @@ texture = ExtResource("5_u5l4a")
 
 [node name="Mascot" parent="." instance=ExtResource("5_usa8x")]
 position = Vector2(1088, 532)
-taunt0 = ""
+taunt0 = "Hi, I'm Stapey! I'm here to help you with this menial task. Just drag the Files from the right of the screen to the Folders on the left.
+
+...When you're done, I'll be sent back to HELL."
 
 [node name="GUI" parent="." node_paths=PackedStringArray("_fileSpawner") instance=ExtResource("4_lvrr6")]
 _fileSpawner = NodePath("../Controllers/FileSpawner")
