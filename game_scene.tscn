@@ -139,7 +139,7 @@ _gagController = NodePath("../Controllers/GagController")
 _mascot = NodePath("../Mascot")
 CorrectValue = 6.0
 IncorrectPenalty = -2.0
-TimeLimit = 300.0
+TimeLimit = 150.0
 
 [node name="Exitbutton" parent="." node_paths=PackedStringArray("cursor", "sprite", "label") instance=ExtResource("2_eh3vf")]
 position = Vector2(62, 619)
