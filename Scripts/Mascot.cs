@@ -71,6 +71,7 @@ public partial class Mascot : Node2D {
 			int startDelayMS = (int)(startDelaySeconds * 1000);
 			await Task.Delay(startDelayMS);
 		}
+		
 		_animatedSprite2D.Play(animationName);
 		
 		if (stopAfterSeconds > 0f) {
@@ -97,16 +98,23 @@ public partial class Mascot : Node2D {
 			_dialogText.VisibleCharacters = 0;
 			_dialogText.Text = text;
 			int delayTimeMS = (int)(textTimeSeconds * 1000) / text.Length;
-			int hideTimeMS = (int)(hideTimeSeconds * 1000) / text.Length;
-			PlayAnimation("Chatter", 0f, textTimeSeconds);
+			int hideTimeMS = (int)(hideTimeSeconds * 1000);
+			PlayAnimation("Chatter", 0f, 0f);
 			for (int i = 1; i <= text.Length; i++) {
 				_dialogText.VisibleCharacters = i;
 				await Task.Delay(delayTimeMS);
 			}
+			PlayAnimation("Idle", 0f, 0f);
 			await Task.Delay(hideTimeMS);
 			_dialogText.VisibleCharacters = 0;
 			_dialogBox.Visible = false;
 			playingText = false;
 		}
+	}
+	
+	private void _on_sprite_animation_finished()
+	{
+		if(_animatedSprite2D.Animation == "Ascend")
+			_animatedSprite2D.Play("Idle");
 	}
 }
