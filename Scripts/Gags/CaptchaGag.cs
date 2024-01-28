@@ -50,7 +50,7 @@ public partial class CaptchaGag : BaseGag
 	{
 		if (@event.IsPressed() && @event is InputEventKey eventKey)
 		{
-			if (eventKey.Keycode == Key.Enter)
+			if (eventKey.Keycode == Key.Enter || eventKey.Keycode == Key.KpEnter)
 			{
 				Submit();
 			}
