@@ -36,7 +36,6 @@ public partial class GameManager : Control {
 	// 0 or less for no time limit
 	private float TimeLimit = 0f;
 	
-	[Export]
 	public PackedScene gameScene;
 	
 	public PackedScene menuScene;
@@ -60,7 +59,8 @@ public partial class GameManager : Control {
 		_progressLabel = GetNode<Label>("Background/Area2D/TextureButton/ProgressLabel");
 		_progressGameButton = GetNode<GameButton>("Background/Area2D");
 		menuScene = GD.Load<PackedScene>("res://menu.tscn");
-		
+		gameScene = GD.Load<PackedScene>("res://game_scene.tscn");
+
 		StartGame(StartingNumFiles, FileSpawnInterval, CorrectValue, IncorrectPenalty, TimeLimit);
 	}
 	
